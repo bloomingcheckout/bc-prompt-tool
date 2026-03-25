@@ -3,9 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Free AI Prompt Generator | Blooming Checkout</title>
-<meta name="description" content="Generate a professional AI mega-prompt for your exact business in seconds. Free, powered by Claude.">
-<link rel="canonical" href="https://bc-prompt-tool.vercel.app/">
+<title>AI Prompt Generator | Blooming Checkout</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -18,32 +16,14 @@
   --ff-head:'Libre Baskerville',Baskerville,Georgia,serif;
   --ff-body:'Poppins',system-ui,sans-serif;
 }
-html{scroll-behavior:smooth}
-body{font-family:var(--ff-body);background:#fff;color:var(--ink);-webkit-font-smoothing:antialiased;overflow-x:hidden;min-height:100vh;display:flex;flex-direction:column}
-
-/* NAV */
-.nav{padding:16px 32px;display:flex;align-items:center;justify-content:space-between;background:rgba(255,255,255,0.95);border-bottom:1px solid rgba(239,168,187,0.2);position:sticky;top:0;z-index:100}
-.nav-logo{font-family:var(--ff-head);font-size:1rem;font-weight:700;color:var(--green);text-decoration:none}
-.nav-logo span{color:var(--pink-deep)}
-.nav-cta{background:var(--green);color:#fff;font-family:var(--ff-body);font-size:0.78rem;font-weight:600;padding:8px 18px;border-radius:100px;text-decoration:none}
-
-/* HERO */
-.hero{padding:56px 24px 48px;text-align:center;background:radial-gradient(ellipse 80% 60% at 15% 10%,rgba(239,168,187,0.38) 0%,transparent 55%),radial-gradient(ellipse 60% 50% at 85% 20%,rgba(222,174,208,0.3) 0%,transparent 50%),radial-gradient(ellipse 90% 70% at 20% 90%,rgba(245,224,237,0.5) 0%,transparent 60%),#fff8f4}
-.hero-eyebrow{display:inline-block;font-size:0.7rem;font-weight:600;letter-spacing:0.12em;text-transform:uppercase;color:var(--green);background:var(--pink-blush);border:1px solid rgba(239,168,187,0.5);padding:6px 18px;border-radius:100px;margin-bottom:24px}
-.hero h1{font-family:var(--ff-head);font-size:clamp(2rem,5vw,3.2rem);font-weight:700;color:var(--green);line-height:1.08;margin-bottom:16px;letter-spacing:-0.02em}
-.hero h1 em{font-style:italic;color:var(--raspberry)}
-.hero p{font-size:1rem;color:var(--mid);max-width:480px;margin:0 auto 28px;line-height:1.65}
-.hero-pills{display:flex;flex-wrap:wrap;justify-content:center;gap:8px}
-.pill{background:rgba(255,255,255,0.8);border:1.5px solid rgba(239,168,187,0.45);color:var(--green);font-size:0.78rem;font-weight:500;padding:7px 16px;border-radius:100px}
-
-/* TOOL */
-.tool-wrap{flex:1;padding:40px 24px 56px;max-width:680px;margin:0 auto;width:100%}
-.tool-card{background:#fff;border-radius:20px;border:1.5px solid rgba(239,168,187,0.35);box-shadow:0 2px 8px rgba(239,168,187,0.12),0 16px 48px rgba(31,80,53,0.07);overflow:hidden}
+html,body{height:100%}
+body{font-family:var(--ff-body);background:radial-gradient(ellipse 80% 60% at 15% 10%,rgba(239,168,187,0.3) 0%,transparent 55%),radial-gradient(ellipse 90% 70% at 85% 90%,rgba(245,224,237,0.4) 0%,transparent 60%),#fff8f4;color:var(--ink);-webkit-font-smoothing:antialiased;display:flex;align-items:center;justify-content:center;min-height:100vh;padding:24px 16px}
+.tool-card{width:100%;max-width:620px;background:#fff;border-radius:20px;border:1.5px solid rgba(239,168,187,0.35);box-shadow:0 2px 8px rgba(239,168,187,0.12),0 16px 48px rgba(31,80,53,0.08);overflow:hidden}
 .tool-head{background:linear-gradient(135deg,var(--green) 0%,#2e6b50 100%);padding:22px 28px;display:flex;align-items:center;justify-content:space-between}
 .tool-head-title{font-family:var(--ff-head);font-size:1rem;font-weight:700;color:#fff}
 .tool-badge{background:var(--gold);color:var(--ink);font-size:0.65rem;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;padding:4px 12px;border-radius:100px}
-.tool-steps{display:flex;padding:16px 28px;background:var(--pink-blush);border-bottom:1px solid rgba(239,168,187,0.25);gap:4px}
-.step-item{flex:1;display:flex;align-items:center;gap:7px;font-size:0.7rem;font-weight:600;color:var(--light);font-family:var(--ff-body)}
+.tool-steps{display:flex;padding:14px 28px;background:var(--pink-blush);border-bottom:1px solid rgba(239,168,187,0.25);gap:4px}
+.step-item{flex:1;display:flex;align-items:center;gap:7px;font-size:0.68rem;font-weight:600;color:var(--light);font-family:var(--ff-body)}
 .step-item.active{color:var(--green)}
 .step-num{width:20px;height:20px;border-radius:50%;background:rgba(31,80,53,0.1);display:flex;align-items:center;justify-content:center;font-size:0.65rem;font-weight:700;color:var(--mid);flex-shrink:0}
 .step-item.active .step-num{background:var(--green);color:#fff}
@@ -55,7 +35,7 @@ body{font-family:var(--ff-body);background:#fff;color:var(--ink);-webkit-font-sm
 .ind-btn:hover{border-color:var(--pink-deep);background:var(--pink-blush)}
 .ind-btn.selected{border-color:var(--green);background:rgba(31,80,53,0.04);color:var(--green);font-weight:600}
 .ind-emoji{font-size:1.1rem}
-.task-list{display:flex;flex-direction:column;gap:7px;max-height:260px;overflow-y:auto;margin-bottom:16px}
+.task-list{display:flex;flex-direction:column;gap:7px;max-height:240px;overflow-y:auto;margin-bottom:16px}
 .task-list::-webkit-scrollbar{width:3px}
 .task-list::-webkit-scrollbar-thumb{background:var(--pink-deep);border-radius:3px}
 .task-btn{background:#fff;border:1.5px solid rgba(239,168,187,0.2);border-radius:10px;padding:11px 14px;color:var(--mid);cursor:pointer;text-align:left;font-family:var(--ff-body);font-size:0.83rem;transition:all 0.15s ease}
@@ -68,159 +48,119 @@ textarea::placeholder{color:var(--pink-deep)}
 .back-btn{background:none;border:none;color:var(--pink-deep);cursor:pointer;font-size:0.78rem;font-family:var(--ff-body);padding:0;margin-bottom:18px;display:flex;align-items:center;gap:4px}
 .btn-gen{display:flex;align-items:center;justify-content:center;gap:8px;width:100%;background:linear-gradient(135deg,var(--green) 0%,#2e6b50 100%);color:#fff;font-family:var(--ff-body);font-size:0.95rem;font-weight:600;padding:15px 24px;border-radius:12px;border:none;cursor:pointer;box-shadow:0 4px 16px rgba(31,80,53,0.22)}
 .btn-gen:disabled{opacity:0.45;cursor:not-allowed}
-.loader-wrap{display:flex;flex-direction:column;align-items:center;padding:44px 0;gap:18px}
+.loader-wrap{display:flex;flex-direction:column;align-items:center;padding:44px 0;gap:18px;text-align:center}
 .spinner{width:48px;height:48px;border-radius:50%;border:3px solid var(--pink-blush);border-top-color:var(--raspberry);border-right-color:var(--gold);animation:spin 0.9s linear infinite}
 @keyframes spin{to{transform:rotate(360deg)}}
 .loader-wrap p{color:var(--green);font-size:1rem;font-family:var(--ff-head);font-weight:700}
 .loader-wrap small{color:var(--pink-deep);font-size:0.78rem}
 .result-tag{font-size:0.68rem;letter-spacing:0.08em;text-transform:uppercase;color:var(--raspberry);font-weight:600;background:var(--pink-blush);display:inline-block;border-radius:100px;padding:4px 12px;margin-bottom:8px}
-.result-task{font-family:var(--ff-head);color:var(--green);font-size:1.05rem;font-weight:700;margin-bottom:14px}
-.prompt-box{background:linear-gradient(135deg,#f9f5f0,var(--cream));border:1.5px solid var(--pink-blush);border-radius:14px;padding:18px;color:var(--mid);font-size:0.8rem;line-height:1.8;font-family:'Courier New',monospace;white-space:pre-wrap;max-height:280px;overflow-y:auto;margin-bottom:14px}
-.prompt-box::-webkit-scrollbar{width:3px}
-.prompt-box::-webkit-scrollbar-thumb{background:var(--pink-deep);border-radius:3px}
+.result-task{font-family:var(--ff-head);color:var(--green);font-size:1rem;font-weight:700;margin-bottom:14px}
+.prompt-box{background:linear-gradient(135deg,#f9f5f0,var(--cream));border:1.5px solid var(--pink-blush);border-radius:14px;padding:18px;color:var(--mid);font-size:0.78rem;line-height:1.8;font-family:'Courier New',monospace;white-space:pre-wrap;max-height:260px;overflow-y:auto;margin-bottom:14px}
 .action-row{display:flex;gap:8px;margin-bottom:20px}
 .btn-copy{flex:1;background:var(--green);border:none;border-radius:10px;padding:12px;color:var(--gold);cursor:pointer;font-size:0.83rem;font-family:var(--ff-body);font-weight:600}
 .btn-copy.copied{background:linear-gradient(135deg,var(--gold),#f0a830);color:var(--green)}
 .btn-new{flex:1;background:#fff;border:1.5px solid var(--pink-deep);border-radius:10px;padding:12px;color:var(--green);cursor:pointer;font-size:0.83rem;font-family:var(--ff-body);font-weight:500}
-.upsell{background:linear-gradient(135deg,var(--pink-blush),#fff8ee);border:1.5px solid var(--pink-deep);border-radius:16px;padding:20px}
-.upsell p{color:var(--green);font-size:0.88rem;line-height:1.6;margin-bottom:14px}
-.upsell a{display:inline-block;background:var(--green);border-radius:8px;padding:10px 20px;color:#fff;font-size:0.83rem;font-weight:600;text-decoration:none;font-family:var(--ff-body)}
-.divider{height:1px;background:linear-gradient(90deg,transparent,var(--pink-deep),transparent);margin:16px 0}
-.gate-wrap{text-align:center;padding:8px 0}
-.gate-icon{width:64px;height:64px;background:linear-gradient(135deg,var(--pink-blush),#fde8f2);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:28px;margin:0 auto 18px;border:2px solid var(--pink-deep)}
-.gate-wrap h2{font-family:var(--ff-head);color:var(--green);font-size:1.2rem;font-weight:700;margin-bottom:8px}
-.gate-wrap p{color:var(--mid);font-size:0.88rem;line-height:1.6;margin-bottom:22px}
+.upsell{background:linear-gradient(135deg,var(--pink-blush),#fff8ee);border:1.5px solid var(--pink-deep);border-radius:14px;padding:18px}
+.upsell p{color:var(--green);font-size:0.85rem;line-height:1.6;margin-bottom:12px}
+.upsell a{display:inline-block;background:var(--green);border-radius:8px;padding:9px 18px;color:#fff;font-size:0.8rem;font-weight:600;text-decoration:none;font-family:var(--ff-body)}
+.divider{height:1px;background:linear-gradient(90deg,transparent,var(--pink-deep),transparent);margin:14px 0}
+.gate-wrap,.success-wrap{text-align:center;padding:8px 0}
+.gate-icon,.success-icon{width:60px;height:60px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:26px;margin:0 auto 16px}
+.gate-icon{background:linear-gradient(135deg,var(--pink-blush),#fde8f2);border:2px solid var(--pink-deep)}
+.success-icon{background:linear-gradient(135deg,#e8f7ee,#d4f0de);border:2px solid #a8dab8}
+.gate-wrap h2,.success-wrap h2{font-family:var(--ff-head);color:var(--green);font-size:1.1rem;font-weight:700;margin-bottom:8px}
+.gate-wrap p,.success-wrap p{color:var(--mid);font-size:0.85rem;line-height:1.6;margin-bottom:20px}
 .email-row{display:flex;gap:8px;margin-bottom:10px}
 .email-row input{flex:1;min-width:0;background:#fff;border:1.5px solid var(--pink-blush);border-radius:10px;padding:11px 14px;color:var(--ink);font-size:0.83rem;font-family:var(--ff-body);outline:none}
 .email-row input:focus{border-color:var(--gold)}
-.btn-unlock{background:linear-gradient(135deg,var(--gold),var(--raspberry));border:none;border-radius:10px;padding:11px 18px;color:#fff;font-size:0.83rem;font-family:var(--ff-body);font-weight:600;cursor:pointer;white-space:nowrap}
+.btn-unlock{background:linear-gradient(135deg,var(--gold),var(--raspberry));border:none;border-radius:10px;padding:11px 16px;color:#fff;font-size:0.83rem;font-family:var(--ff-body);font-weight:600;cursor:pointer;white-space:nowrap}
 .btn-unlock:disabled{opacity:0.6;cursor:not-allowed}
-.privacy{color:var(--pink-deep);font-size:0.72rem}
-.success-wrap{text-align:center;padding:8px 0}
-.success-icon{width:64px;height:64px;background:linear-gradient(135deg,#e8f7ee,#d4f0de);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:28px;margin:0 auto 18px;border:2px solid #a8dab8}
-.success-wrap h2{font-family:var(--ff-head);color:var(--green);font-size:1.2rem;font-weight:700;margin-bottom:8px}
-.success-wrap p{color:var(--mid);font-size:0.88rem;line-height:1.6;margin-bottom:22px}
-
-/* FOOTER */
-.footer{background:var(--green);padding:20px 32px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px}
-.footer-logo{font-family:var(--ff-head);font-size:0.9rem;font-weight:700;color:rgba(255,255,255,0.9);text-decoration:none}
-.footer-copy{font-size:0.72rem;color:rgba(255,255,255,0.4)}
-.footer a{font-size:0.78rem;color:rgba(255,255,255,0.55);text-decoration:none}
-.footer a:hover{color:var(--pink-deep)}
-
-@media(max-width:640px){
-  .nav{padding:12px 20px}
-  .hero{padding:40px 20px 36px}
-  .hero h1{font-size:1.8rem}
-  .tool-wrap{padding:28px 16px 40px}
+.privacy{color:var(--pink-deep);font-size:0.7rem}
+@media(max-width:480px){
+  body{padding:16px 12px;align-items:flex-start;padding-top:20px}
   .ind-grid{grid-template-columns:1fr}
-  .action-row{flex-direction:column}
-  .email-row{flex-direction:column}
-  .footer{flex-direction:column;text-align:center}
+  .action-row,.email-row{flex-direction:column}
 }
 </style>
 </head>
 <body>
 
-<nav class="nav">
-  <a href="https://bloomingcheckout.com" class="nav-logo">Blooming <span>Checkout</span></a>
-  <a href="https://bloomingcheckout.com/collections/digital-marketing-plans" class="nav-cta">SEO Plans →</a>
-</nav>
-
-<div class="hero">
-  <span class="hero-eyebrow">🌸 Free AI Tool</span>
-  <h1>Better AI prompts,<br><em>built for your business</em></h1>
-  <p>Pick your industry, choose your task, get a professional mega-prompt in seconds.</p>
-  <div class="hero-pills">
-    <span class="pill">✦ Free to use</span>
-    <span class="pill">⚡ Powered by Claude</span>
-    <span class="pill">🔒 No account needed</span>
+<div class="tool-card">
+  <div class="tool-head">
+    <span class="tool-head-title">AI Prompt Generator ✦</span>
+    <span class="tool-badge">Free Tool</span>
   </div>
-</div>
-
-<div class="tool-wrap">
-  <div class="tool-card">
-    <div class="tool-head">
-      <span class="tool-head-title">AI Prompt Generator ✦</span>
-      <span class="tool-badge">Free Tool</span>
+  <div class="tool-steps">
+    <div class="step-item active" id="s1"><span class="step-num">1</span>Business type</div>
+    <div class="step-div"></div>
+    <div class="step-item" id="s2"><span class="step-num">2</span>Your task</div>
+    <div class="step-div"></div>
+    <div class="step-item" id="s3"><span class="step-num">3</span>Your prompt</div>
+  </div>
+  <div class="tool-body">
+    <div id="step-business">
+      <p>What kind of business are you?</p>
+      <div class="ind-grid">
+        <button class="ind-btn" onclick="selectBusiness('florist','Florist / Flower Shop')"><span class="ind-emoji">🌸</span>Florist / Flower Shop</button>
+        <button class="ind-btn" onclick="selectBusiness('shopify','Shopify Store Owner')"><span class="ind-emoji">🛍️</span>Shopify Store Owner</button>
+        <button class="ind-btn" onclick="selectBusiness('fashion','Fashion Boutique')"><span class="ind-emoji">👗</span>Fashion Boutique</button>
+        <button class="ind-btn" onclick="selectBusiness('wellness','Wellness Business')"><span class="ind-emoji">🧘</span>Wellness Business</button>
+        <button class="ind-btn" onclick="selectBusiness('agency','Marketing Agency')"><span class="ind-emoji">📈</span>Marketing Agency</button>
+        <button class="ind-btn" onclick="selectBusiness('lifestyle','Lifestyle Brand')"><span class="ind-emoji">✨</span>Lifestyle Brand</button>
+      </div>
     </div>
-    <div class="tool-steps">
-      <div class="step-item active" id="s1"><span class="step-num">1</span>Business type</div>
-      <div class="step-div"></div>
-      <div class="step-item" id="s2"><span class="step-num">2</span>Your task</div>
-      <div class="step-div"></div>
-      <div class="step-item" id="s3"><span class="step-num">3</span>Your prompt</div>
+    <div id="step-task" style="display:none">
+      <button class="back-btn" onclick="goBack()">← Back</button>
+      <p style="font-weight:600;margin-bottom:6px">What do you need help with?</p>
+      <p style="font-size:0.78rem;color:var(--light);margin-bottom:14px">Pick a task or describe your own.</p>
+      <div class="task-list" id="task-list"></div>
+      <div class="divider"></div>
+      <label class="custom-label">Or describe your own task</label>
+      <textarea id="custom-task" rows="2" placeholder="e.g. Write a Mother's Day email for my flower shop..." oninput="onCustomInput()"></textarea>
+      <button class="btn-gen" id="generate-btn" onclick="generate()" disabled>Generate My Prompt ✦</button>
     </div>
-    <div class="tool-body">
-      <div id="step-business">
-        <p>What kind of business are you?</p>
-        <div class="ind-grid">
-          <button class="ind-btn" onclick="selectBusiness('florist','Florist / Flower Shop')"><span class="ind-emoji">🌸</span>Florist / Flower Shop</button>
-          <button class="ind-btn" onclick="selectBusiness('shopify','Shopify Store Owner')"><span class="ind-emoji">🛍️</span>Shopify Store Owner</button>
-          <button class="ind-btn" onclick="selectBusiness('fashion','Fashion Boutique')"><span class="ind-emoji">👗</span>Fashion Boutique</button>
-          <button class="ind-btn" onclick="selectBusiness('wellness','Wellness Business')"><span class="ind-emoji">🧘</span>Wellness Business</button>
-          <button class="ind-btn" onclick="selectBusiness('agency','Marketing Agency')"><span class="ind-emoji">📈</span>Marketing Agency</button>
-          <button class="ind-btn" onclick="selectBusiness('lifestyle','Lifestyle Brand')"><span class="ind-emoji">✨</span>Lifestyle Brand</button>
-        </div>
+    <div id="step-generating" style="display:none">
+      <div class="loader-wrap">
+        <div class="spinner"></div>
+        <p>Building your prompt...</p>
+        <small>About 10 seconds</small>
       </div>
-      <div id="step-task" style="display:none">
-        <button class="back-btn" onclick="goBack()">← Back</button>
-        <p style="font-weight:600;margin-bottom:6px">What do you need help with?</p>
-        <p style="font-size:0.78rem;color:var(--light);margin-bottom:14px">Pick a task or describe your own.</p>
-        <div class="task-list" id="task-list"></div>
-        <div class="divider"></div>
-        <label class="custom-label">Or describe your own task</label>
-        <textarea id="custom-task" rows="2" placeholder="e.g. Write a Mother's Day email for my flower shop..." oninput="onCustomInput()"></textarea>
-        <button class="btn-gen" id="generate-btn" onclick="generate()" disabled>Generate My Prompt ✦</button>
+    </div>
+    <div id="step-result" style="display:none">
+      <div class="result-tag">Your Mega-Prompt ✦</div>
+      <div class="result-task" id="result-task-name"></div>
+      <div class="prompt-box" id="prompt-output"></div>
+      <div class="action-row">
+        <button class="btn-copy" id="copy-btn" onclick="copyPrompt()">Copy Prompt</button>
+        <button class="btn-new" onclick="reset()">New Prompt</button>
       </div>
-      <div id="step-generating" style="display:none">
-        <div class="loader-wrap">
-          <div class="spinner"></div>
-          <div style="text-align:center"><p>Building your prompt...</p><small>About 10 seconds</small></div>
-        </div>
+      <div class="upsell">
+        <p><strong>Want more from your SEO?</strong><br>Done-for-you SEO plans for Shopify stores and lifestyle brands.</p>
+        <a href="https://bloomingcheckout.com/collections/digital-marketing-plans" target="_blank">Explore SEO Plans →</a>
       </div>
-      <div id="step-result" style="display:none">
-        <div class="result-tag">Your Mega-Prompt ✦</div>
-        <div class="result-task" id="result-task-name"></div>
-        <div class="prompt-box" id="prompt-output"></div>
-        <div class="action-row">
-          <button class="btn-copy" id="copy-btn" onclick="copyPrompt()">Copy Prompt</button>
-          <button class="btn-new" onclick="reset()">New Prompt</button>
+    </div>
+    <div id="step-gate" style="display:none">
+      <div class="gate-wrap">
+        <div class="gate-icon">🌸</div>
+        <h2>Get unlimited prompts</h2>
+        <p>You've used your 2 free generations. Drop your email and get <strong>10 free mega-prompts</strong> delivered instantly.</p>
+        <div class="email-row">
+          <input type="email" id="email-input" placeholder="your@email.com"/>
+          <button class="btn-unlock" onclick="submitEmail()">Continue →</button>
         </div>
-        <div class="upsell">
-          <p><strong>Want more from your SEO?</strong><br>Explore done-for-you SEO plans built for Shopify stores and lifestyle brands.</p>
-          <a href="https://bloomingcheckout.com/collections/digital-marketing-plans" target="_blank">Explore SEO Plans →</a>
-        </div>
+        <div class="privacy">No spam. Unsubscribe any time.</div>
       </div>
-      <div id="step-gate" style="display:none">
-        <div class="gate-wrap">
-          <div class="gate-icon">🌸</div>
-          <h2>Get unlimited prompts</h2>
-          <p>You've used your 2 free generations. Drop your email and get <strong>10 free mega-prompts</strong> delivered instantly.</p>
-          <div class="email-row">
-            <input type="email" id="email-input" placeholder="your@email.com"/>
-            <button class="btn-unlock" onclick="submitEmail()">Continue →</button>
-          </div>
-          <div class="privacy">No spam. Unsubscribe any time.</div>
-        </div>
-      </div>
-      <div id="step-success" style="display:none">
-        <div class="success-wrap">
-          <div class="success-icon">✉️</div>
-          <h2>On its way!</h2>
-          <p>Your 10 free mega-prompts are heading to your inbox.</p>
-          <button class="btn-gen" style="margin-top:16px" onclick="reset()">Keep Generating ✦</button>
-        </div>
+    </div>
+    <div id="step-success" style="display:none">
+      <div class="success-wrap">
+        <div class="success-icon">✉️</div>
+        <h2>On its way!</h2>
+        <p>Your 10 free mega-prompts are heading to your inbox.</p>
+        <button class="btn-gen" style="margin-top:16px" onclick="reset()">Keep Generating ✦</button>
       </div>
     </div>
   </div>
 </div>
-
-<footer class="footer">
-  <a href="https://bloomingcheckout.com" class="footer-logo">Blooming Checkout</a>
-  <span class="footer-copy">Powered by Claude AI</span>
-  <a href="https://bloomingcheckout.com/collections/digital-marketing-plans">SEO Plans</a>
-</footer>
 
 <script>
 const TASKS={florist:["Write bouquet and product descriptions","Create a seasonal campaign (Mother's Day, Valentine's, etc.)","Write SEO collection page copy","Build an email marketing sequence","Generate social media captions","Write Google Ads copy","Create a customer win-back campaign"],shopify:["Write SEO collection page copy","Write product descriptions that convert","Create a Google Ads campaign","Build an email welcome sequence","Write meta titles and descriptions","Generate a social media content calendar","Write a blog post for SEO"],fashion:["Write product descriptions for clothing","Create a new season launch campaign","Write Instagram and TikTok captions","Build an email sequence for new arrivals","Write SEO collection page copy","Create a lookbook narrative"],wellness:["Write service and treatment descriptions","Create a wellness package launch campaign","Write Instagram content","Build a client nurture email sequence","Write a blog post for SEO","Write Google Ads for a local studio"],agency:["Write a client SEO proposal","Create a client audit summary","Write cold outreach emails","Build a content strategy brief","Write case study copy","Write a monthly performance report"],lifestyle:["Write brand voice guidelines","Create Instagram content pillars","Write a product launch email sequence","Build product storytelling copy","Write website homepage copy","Write influencer outreach emails"]};
