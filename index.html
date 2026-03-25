@@ -16,10 +16,10 @@
   --ff-head:'Libre Baskerville',Baskerville,Georgia,serif;
   --ff-body:'Poppins',system-ui,sans-serif;
 }
-html,body{height:100%}
-body{font-family:var(--ff-body);background:radial-gradient(ellipse 80% 60% at 15% 10%,rgba(239,168,187,0.3) 0%,transparent 55%),radial-gradient(ellipse 90% 70% at 85% 90%,rgba(245,224,237,0.4) 0%,transparent 60%),#fff8f4;color:var(--ink);-webkit-font-smoothing:antialiased;display:flex;align-items:center;justify-content:center;min-height:100vh;padding:24px 16px}
-.tool-card{width:100%;max-width:620px;background:#fff;border-radius:20px;border:1.5px solid rgba(239,168,187,0.35);box-shadow:0 2px 8px rgba(239,168,187,0.12),0 16px 48px rgba(31,80,53,0.08);overflow:hidden}
-.tool-head{background:linear-gradient(135deg,var(--green) 0%,#2e6b50 100%);padding:22px 28px;display:flex;align-items:center;justify-content:space-between}
+html,body{height:100%;margin:0;padding:0}
+body{font-family:var(--ff-body);background:transparent;color:var(--ink);-webkit-font-smoothing:antialiased;display:flex;align-items:flex-start;justify-content:center;padding:0}
+.tool-card{width:100%;background:#fff;border-radius:0;overflow:hidden}
+.tool-head{background:linear-gradient(135deg,var(--green) 0%,#2e6b50 100%);padding:20px 28px;display:flex;align-items:center;justify-content:space-between}
 .tool-head-title{font-family:var(--ff-head);font-size:1rem;font-weight:700;color:#fff}
 .tool-badge{background:var(--gold);color:var(--ink);font-size:0.65rem;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;padding:4px 12px;border-radius:100px}
 .tool-steps{display:flex;padding:14px 28px;background:var(--pink-blush);border-bottom:1px solid rgba(239,168,187,0.25);gap:4px}
@@ -77,14 +77,12 @@ textarea::placeholder{color:var(--pink-deep)}
 .btn-unlock:disabled{opacity:0.6;cursor:not-allowed}
 .privacy{color:var(--pink-deep);font-size:0.7rem}
 @media(max-width:480px){
-  body{padding:16px 12px;align-items:flex-start;padding-top:20px}
   .ind-grid{grid-template-columns:1fr}
   .action-row,.email-row{flex-direction:column}
 }
 </style>
 </head>
 <body>
-
 <div class="tool-card">
   <div class="tool-head">
     <span class="tool-head-title">AI Prompt Generator ✦</span>
@@ -161,7 +159,6 @@ textarea::placeholder{color:var(--pink-deep)}
     </div>
   </div>
 </div>
-
 <script>
 const TASKS={florist:["Write bouquet and product descriptions","Create a seasonal campaign (Mother's Day, Valentine's, etc.)","Write SEO collection page copy","Build an email marketing sequence","Generate social media captions","Write Google Ads copy","Create a customer win-back campaign"],shopify:["Write SEO collection page copy","Write product descriptions that convert","Create a Google Ads campaign","Build an email welcome sequence","Write meta titles and descriptions","Generate a social media content calendar","Write a blog post for SEO"],fashion:["Write product descriptions for clothing","Create a new season launch campaign","Write Instagram and TikTok captions","Build an email sequence for new arrivals","Write SEO collection page copy","Create a lookbook narrative"],wellness:["Write service and treatment descriptions","Create a wellness package launch campaign","Write Instagram content","Build a client nurture email sequence","Write a blog post for SEO","Write Google Ads for a local studio"],agency:["Write a client SEO proposal","Create a client audit summary","Write cold outreach emails","Build a content strategy brief","Write case study copy","Write a monthly performance report"],lifestyle:["Write brand voice guidelines","Create Instagram content pillars","Write a product launch email sequence","Build product storytelling copy","Write website homepage copy","Write influencer outreach emails"]};
 const SYSTEM=`You are an expert prompt engineer who creates mega-prompts -- detailed, role-based AI instructions that produce professional business outputs in a single use.\n\nStructure every mega-prompt exactly like this:\n\n#CONTEXT:\n[Assign a specific expert AI role relevant to the task]\n\n#GOAL:\n[The precise outcome the user wants to achieve]\n\n#TASK REQUIREMENTS:\n[4-6 specific, measurable criteria the output must meet]\n\n#OUTPUT FORMAT:\n[Exact format, structure, length, and delivery]\n\n#TONE AND VOICE:\n[Specific tone, brand personality, and audience]\n\n#VARIABLES TO CUSTOMISE:\n[List every [BRACKETED_VARIABLE] the user must fill in before using]\n\nMake the prompt detailed, specific, and immediately usable. At least 280 words. Return ONLY the mega-prompt. No preamble, no explanation, no markdown fences.`;
