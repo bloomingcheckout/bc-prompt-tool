@@ -1,0 +1,969 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AI Prompt Generator | Blooming Checkout</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --forest:  #1f5035;
+      --gold:    #fdbb43;
+      --rose:    #d84760;
+      --blush:   #efa8bb;
+      --petal:   #f5e0ed;
+      --mauve:   #deaed0;
+      --cream:   #fff1e2;
+      --white:   #ffffff;
+    }
+    body {
+      min-height: 100vh;
+      background: linear-gradient(160deg, var(--cream) 0%, var(--petal) 45%, #fce8f0 100%);
+      font-family: 'DM Sans', sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 48px 20px 64px;
+      position: relative;
+      overflow-x: hidden;
+    }
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background:
+        radial-gradient(ellipse at 0% 0%, rgba(253,187,67,0.25) 0%, transparent 45%),
+        radial-gradient(ellipse at 100% 100%, rgba(216,71,96,0.15) 0%, transparent 45%),
+        radial-gradient(ellipse at 60% 20%, rgba(239,168,187,0.2) 0%, transparent 40%);
+      pointer-events: none;
+    }
+    /* -- HEADER -- */
+    .header {
+      text-align: center;
+      margin-bottom: 44px;
+      position: relative;
+      z-index: 1;
+    }
+    .brand-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--forest);
+      border-radius: 100px;
+      padding: 7px 18px;
+      margin-bottom: 20px;
+    }
+    .brand-pill span {
+      font-size: 11px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      font-weight: 600;
+      color: var(--gold);
+    }
+    .header h1 {
+      font-family: 'Playfair Display', Georgia, serif;
+      font-size: clamp(32px, 5.5vw, 54px);
+      font-weight: 400;
+      color: var(--forest);
+      line-height: 1.15;
+      margin-bottom: 14px;
+      letter-spacing: -0.5px;
+    }
+    .header h1 em {
+      font-style: italic;
+      color: var(--rose);
+    }
+    .header p {
+      font-size: 17px;
+      color: #7a4e5e;
+      font-weight: 300;
+      max-width: 440px;
+      margin: 0 auto 24px;
+      line-height: 1.65;
+    }
+    .badge-row {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 8px;
+    }
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      background: var(--white);
+      border: 1.5px solid var(--blush);
+      border-radius: 100px;
+      padding: 6px 15px;
+      color: var(--rose);
+      font-size: 12.5px;
+      font-weight: 500;
+      box-shadow: 0 2px 8px rgba(216,71,96,0.08);
+    }
+    /* -- CARD -- */
+    .card {
+      width: 100%;
+      max-width: 660px;
+      background: var(--white);
+      border-radius: 28px;
+      border: 1.5px solid var(--petal);
+      padding: 44px;
+      position: relative;
+      z-index: 1;
+      box-shadow:
+        0 24px 60px rgba(216,71,96,0.1),
+        0 4px 16px rgba(31,80,53,0.06),
+        inset 0 1px 0 rgba(255,255,255,0.9);
+    }
+    @media (max-width: 600px) { .card { padding: 28px 20px; } }
+    /* -- STEP META -- */
+    .step-meta {
+      display: inline-block;
+      font-size: 11px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      font-weight: 600;
+      color: var(--rose);
+      background: var(--petal);
+      border-radius: 100px;
+      padding: 4px 12px;
+      margin-bottom: 14px;
+    }
+    .step-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 23px;
+      font-weight: 400;
+      color: var(--forest);
+      margin-bottom: 6px;
+      line-height: 1.3;
+    }
+    .step-sub {
+      font-size: 14px;
+      color: #9a7080;
+      font-weight: 300;
+      margin-bottom: 28px;
+      line-height: 1.55;
+    }
+    /* -- BUSINESS GRID -- */
+    .business-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 12px;
+    }
+    @media (max-width: 640px) { .business-grid { grid-template-columns: 1fr 1fr; } }
+    @media (max-width: 380px) { .business-grid { grid-template-columns: 1fr; } }
+    .biz-btn {
+      background: linear-gradient(135deg, var(--cream), var(--petal));
+      border: 1.5px solid var(--blush);
+      border-radius: 18px;
+      padding: 22px 18px;
+      color: var(--forest);
+      cursor: pointer;
+      text-align: left;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 15px;
+      font-weight: 500;
+      transition: all 0.2s ease;
+      box-shadow: 0 2px 8px rgba(216,71,96,0.07);
+    }
+    .biz-btn:hover {
+      background: linear-gradient(135deg, #fff8ee, #fde8f2);
+      border-color: var(--rose);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(216,71,96,0.15);
+    }
+    .biz-btn .biz-icon {
+      font-size: 28px;
+      display: block;
+      margin-bottom: 10px;
+    }
+    /* -- TASK LIST -- */
+    .task-list {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      max-height: 280px;
+      overflow-y: auto;
+      margin-bottom: 20px;
+      padding-right: 4px;
+    }
+    .task-list::-webkit-scrollbar { width: 4px; }
+    .task-list::-webkit-scrollbar-track { background: var(--petal); border-radius: 4px; }
+    .task-list::-webkit-scrollbar-thumb { background: var(--blush); border-radius: 4px; }
+    .task-btn {
+      background: var(--cream);
+      border: 1.5px solid #f0dde8;
+      border-radius: 12px;
+      padding: 13px 16px;
+      color: #6b3f52;
+      cursor: pointer;
+      text-align: left;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 14px;
+      font-weight: 400;
+      transition: all 0.15s ease;
+    }
+    .task-btn:hover {
+      background: var(--petal);
+      border-color: var(--blush);
+      color: var(--rose);
+    }
+    .task-btn.selected {
+      background: linear-gradient(135deg, #fde8f2, #fef4e0);
+      border-color: var(--rose);
+      color: var(--rose);
+      font-weight: 500;
+    }
+    /* -- INPUTS -- */
+    .custom-label {
+      font-size: 11px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--mauve);
+      font-weight: 600;
+      margin-bottom: 8px;
+      display: block;
+    }
+    textarea, input[type="email"] {
+      width: 100%;
+      background: var(--cream);
+      border: 1.5px solid var(--petal);
+      border-radius: 12px;
+      padding: 14px 16px;
+      color: var(--forest);
+      font-size: 14px;
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 400;
+      outline: none;
+      transition: border-color 0.2s, box-shadow 0.2s;
+      resize: vertical;
+    }
+    textarea:focus, input[type="email"]:focus {
+      border-color: var(--gold);
+      box-shadow: 0 0 0 3px rgba(253,187,67,0.15);
+    }
+    textarea::placeholder, input::placeholder {
+      color: var(--mauve);
+    }
+    /* -- BUTTONS -- */
+    .btn-primary {
+      width: 100%;
+      background: linear-gradient(135deg, var(--gold) 0%, var(--rose) 100%);
+      border: none;
+      border-radius: 14px;
+      padding: 17px;
+      color: var(--white);
+      font-size: 16px;
+      font-family: 'Playfair Display', serif;
+      font-weight: 600;
+      cursor: pointer;
+      letter-spacing: 0.3px;
+      transition: all 0.2s;
+      margin-top: 20px;
+      box-shadow: 0 6px 24px rgba(216,71,96,0.3);
+    }
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 32px rgba(216,71,96,0.38);
+    }
+    .btn-primary:disabled {
+      background: var(--petal);
+      color: var(--mauve);
+      cursor: not-allowed;
+      transform: none;
+      box-shadow: none;
+    }
+    .btn-secondary {
+      flex: 1;
+      background: var(--cream);
+      border: 1.5px solid var(--blush);
+      border-radius: 12px;
+      padding: 13px;
+      color: var(--rose);
+      cursor: pointer;
+      font-size: 14px;
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 500;
+      transition: all 0.2s;
+    }
+    .btn-secondary:hover {
+      background: var(--petal);
+      border-color: var(--rose);
+    }
+    .btn-copy {
+      flex: 1;
+      background: var(--forest);
+      border: none;
+      border-radius: 12px;
+      padding: 13px;
+      color: var(--gold);
+      cursor: pointer;
+      font-size: 14px;
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 500;
+      transition: all 0.2s;
+    }
+    .btn-copy:hover { opacity: 0.88; }
+    .btn-copy.copied {
+      background: linear-gradient(135deg, var(--gold), #f0a830);
+      color: var(--forest);
+    }
+    .back-btn {
+      background: none;
+      border: none;
+      color: var(--mauve);
+      cursor: pointer;
+      font-size: 13px;
+      font-family: 'DM Sans', sans-serif;
+      padding: 0;
+      margin-bottom: 22px;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      transition: color 0.2s;
+      font-weight: 400;
+    }
+    .back-btn:hover { color: var(--rose); }
+    /* -- LOADER -- */
+    .loader-wrap {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 52px 0;
+      gap: 22px;
+    }
+    .spinner-ring {
+      width: 56px;
+      height: 56px;
+      border-radius: 50%;
+      border: 3px solid var(--petal);
+      border-top-color: var(--rose);
+      border-right-color: var(--gold);
+      animation: spin 0.9s linear infinite;
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
+    .loader-wrap p {
+      color: var(--forest);
+      font-size: 17px;
+      font-family: 'Playfair Display', serif;
+      font-weight: 400;
+    }
+    .loader-wrap small {
+      color: var(--mauve);
+      font-size: 13px;
+      font-weight: 300;
+    }
+    /* -- DIVIDER -- */
+    .divider {
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--blush), transparent);
+      margin: 20px 0;
+    }
+    /* -- RESULT -- */
+    .result-tag {
+      font-size: 11px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--rose);
+      font-weight: 600;
+      background: var(--petal);
+      display: inline-block;
+      border-radius: 100px;
+      padding: 4px 12px;
+      margin-bottom: 8px;
+    }
+    .result-task {
+      font-family: 'Playfair Display', serif;
+      color: var(--forest);
+      font-size: 18px;
+      font-weight: 400;
+      margin-bottom: 16px;
+    }
+    .prompt-box {
+      background: linear-gradient(135deg, #f9f5f0, var(--cream));
+      border: 1.5px solid var(--petal);
+      border-radius: 16px;
+      padding: 22px;
+      color: #4a3040;
+      font-size: 12.5px;
+      line-height: 1.8;
+      font-family: 'Courier New', monospace;
+      white-space: pre-wrap;
+      max-height: 320px;
+      overflow-y: auto;
+      margin-bottom: 16px;
+      box-shadow: inset 0 2px 8px rgba(216,71,96,0.04);
+    }
+    .prompt-box::-webkit-scrollbar { width: 4px; }
+    .prompt-box::-webkit-scrollbar-thumb { background: var(--blush); border-radius: 4px; }
+    .action-row { display: flex; gap: 10px; margin-bottom: 24px; }
+    /* -- UPSELL -- */
+    .upsell {
+      background: linear-gradient(135deg, var(--petal) 0%, #fff8ee 100%);
+      border: 1.5px solid var(--blush);
+      border-radius: 20px;
+      padding: 24px;
+      position: relative;
+      overflow: hidden;
+    }
+    .upsell::before {
+      content: '\2726';
+      position: absolute;
+      right: 20px;
+      top: 16px;
+      font-size: 32px;
+      color: var(--gold);
+      opacity: 0.4;
+    }
+    .upsell-tag {
+      font-size: 11px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--rose);
+      font-weight: 600;
+      margin-bottom: 8px;
+    }
+    .upsell p {
+      color: var(--forest);
+      font-size: 15px;
+      line-height: 1.55;
+      margin-bottom: 16px;
+      font-weight: 300;
+      max-width: 400px;
+    }
+    .upsell a {
+      display: inline-block;
+      background: linear-gradient(135deg, var(--gold), var(--rose));
+      border-radius: 10px;
+      padding: 11px 24px;
+      color: var(--white);
+      font-size: 14px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: all 0.2s;
+      box-shadow: 0 4px 16px rgba(216,71,96,0.25);
+    }
+    .upsell a:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 6px 20px rgba(216,71,96,0.35);
+    }
+    /* -- EMAIL GATE -- */
+    .gate-wrap { text-align: center; padding: 12px 0; }
+    .gate-icon-wrap {
+      width: 72px;
+      height: 72px;
+      background: linear-gradient(135deg, var(--petal), #fde8f2);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 34px;
+      margin: 0 auto 20px;
+      border: 2px solid var(--blush);
+    }
+    .gate-wrap h2 {
+      font-family: 'Playfair Display', serif;
+      color: var(--forest);
+      font-size: 24px;
+      font-weight: 400;
+      margin-bottom: 10px;
+    }
+    .gate-wrap p {
+      color: #7a4e5e;
+      font-size: 15px;
+      line-height: 1.65;
+      font-weight: 300;
+      margin-bottom: 28px;
+      max-width: 380px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .email-row { display: flex; gap: 10px; margin-bottom: 12px; }
+    .email-row input { flex: 1; min-width: 0; }
+    .btn-unlock {
+      background: linear-gradient(135deg, var(--gold), var(--rose));
+      border: none;
+      border-radius: 12px;
+      padding: 14px 22px;
+      color: var(--white);
+      font-size: 15px;
+      font-family: 'Playfair Display', serif;
+      font-weight: 600;
+      cursor: pointer;
+      white-space: nowrap;
+      transition: all 0.2s;
+      box-shadow: 0 4px 16px rgba(216,71,96,0.3);
+    }
+    .btn-unlock:hover { transform: translateY(-1px); }
+    .privacy-note {
+      color: var(--mauve);
+      font-size: 12px;
+      font-weight: 300;
+    }
+    /* -- SUCCESS -- */
+    .success-wrap { text-align: center; padding: 12px 0; }
+    .success-icon-wrap {
+      width: 72px;
+      height: 72px;
+      background: linear-gradient(135deg, #e8f7ee, #d4f0de);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 34px;
+      margin: 0 auto 20px;
+      border: 2px solid #a8dab8;
+    }
+    .success-wrap h2 {
+      font-family: 'Playfair Display', serif;
+      color: var(--forest);
+      font-size: 24px;
+      font-weight: 400;
+      margin-bottom: 10px;
+    }
+    .success-wrap p {
+      color: #7a4e5e;
+      font-size: 15px;
+      line-height: 1.65;
+      font-weight: 300;
+      margin-bottom: 28px;
+    }
+    /* -- FOOTER -- */
+    .footer {
+      margin-top: 36px;
+      text-align: center;
+      color: var(--mauve);
+      font-size: 12px;
+      position: relative;
+      z-index: 1;
+      font-weight: 300;
+    }
+    .footer a {
+      color: var(--rose);
+      text-decoration: none;
+      font-weight: 500;
+    }
+    .footer a:hover { color: var(--forest); }
+    /* -- PROGRESS DOTS -- */
+    .progress-dots {
+      display: flex;
+      justify-content: center;
+      gap: 6px;
+      margin-bottom: 28px;
+    }
+    .dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--petal);
+      border: 1.5px solid var(--blush);
+      transition: all 0.3s;
+    }
+    .dot.active {
+      background: var(--rose);
+      border-color: var(--rose);
+      width: 20px;
+      border-radius: 4px;
+    }
+    .dot.done {
+      background: var(--gold);
+      border-color: var(--gold);
+    }
+  </style>
+</head>
+<body>
+  <!-- HEADER -->
+  <div class="header">
+    <div class="brand-pill">
+      <span>Blooming Checkout</span>
+    </div>
+    <h1>Your business deserves<br>better <em>AI prompts</em></h1>
+    <p>Generate a professional mega-prompt in seconds. Copy, paste, get results.</p>
+    <div class="badge-row">
+      <span class="badge">&#10022; Free to use</span>
+      <span class="badge">&#9889; Powered by Claude</span>
+      <span class="badge">&#127800; Built for small business</span>
+    </div>
+  </div>
+  <!-- CARD -->
+  <div class="card" id="card">
+    <!-- STEP 1: BUSINESS TYPE -->
+    <div id="step-business">
+      <div class="progress-dots">
+        <div class="dot active"></div>
+        <div class="dot"></div>
+      </div>
+      <div class="step-meta">Step 1 of 2</div>
+      <div class="step-title">What kind of business are you?</div>
+      <div class="step-sub">We build your prompt for your exact industry so it actually works.</div>
+      <div class="business-grid">
+        <button class="biz-btn" onclick="selectBusiness('florist','Florist / Flower Shop')">
+          <span class="biz-icon">&#127800;</span>Florist / Flower Shop
+        </button>
+        <button class="biz-btn" onclick="selectBusiness('shopify','Shopify Store Owner')">
+          <span class="biz-icon">&#128717;&#65039;</span>Shopify Store Owner
+        </button>
+        <button class="biz-btn" onclick="selectBusiness('fashion','Fashion Boutique')">
+          <span class="biz-icon">&#128087;</span>Fashion Boutique
+        </button>
+        <button class="biz-btn" onclick="selectBusiness('wellness','Wellness Business')">
+          <span class="biz-icon">&#129495;</span>Wellness Business
+        </button>
+        <button class="biz-btn" onclick="selectBusiness('agency','Marketing Agency')">
+          <span class="biz-icon">&#128200;</span>Marketing Agency
+        </button>
+        <button class="biz-btn" onclick="selectBusiness('lifestyle','Lifestyle Brand')">
+          <span class="biz-icon">&#10024;</span>Lifestyle Brand
+        </button>
+      </div>
+    </div>
+    <!-- STEP 2: TASK -->
+    <div id="step-task" style="display:none;">
+      <div class="progress-dots">
+        <div class="dot done"></div>
+        <div class="dot active"></div>
+      </div>
+      <button class="back-btn" onclick="goBack('business')">&#8592; Back</button>
+      <div class="step-meta">Step 2 of 2</div>
+      <div class="step-title">What do you need a prompt for?</div>
+      <div class="step-sub">Pick a common task below, or describe your own.</div>
+      <div class="task-list" id="task-list"></div>
+      <div class="divider"></div>
+      <label class="custom-label">Or describe your own task</label>
+      <textarea id="custom-task" rows="3" placeholder="e.g. Write a Valentine's Day email campaign for my flower shop..." oninput="onCustomInput()"></textarea>
+      <button class="btn-primary" id="generate-btn" onclick="generate()" disabled>Generate My Mega-Prompt &#10022;</button>
+    </div>
+    <!-- GENERATING -->
+    <div id="step-generating" style="display:none;">
+      <div class="loader-wrap">
+        <div class="spinner-ring"></div>
+        <div style="text-align:center;">
+          <p>Building your mega-prompt...</p>
+          <small>Usually about 10 seconds</small>
+        </div>
+      </div>
+    </div>
+    <!-- RESULT -->
+    <div id="step-result" style="display:none;">
+      <div class="result-tag">Your Mega-Prompt &#10022;</div>
+      <div class="result-task" id="result-task-name"></div>
+      <div class="prompt-box" id="prompt-output"></div>
+      <div class="action-row">
+        <button class="btn-copy" id="copy-btn" onclick="copyPrompt()">Copy Prompt</button>
+        <button class="btn-secondary" onclick="reset()">New Prompt</button>
+      </div>
+      <div class="upsell">
+        <div class="upsell-tag">Want 50+ more like this?</div>
+        <p>Get the <strong>Shopify SEO Prompt System</strong> &mdash; 50 done-for-you mega-prompts with a Notion workspace and lifetime updates.</p>
+        <a href="https://bloomingcheckout.com/collections/digital-marketing-plans" target="_blank">Get the Full Pack &mdash; $47 &#8594;</a>
+      </div>
+    </div>
+    <!-- EMAIL GATE -->
+    <div id="step-gate" style="display:none;">
+      <div class="gate-wrap">
+        <div class="gate-icon-wrap">&#127807;</div>
+        <h2>Get unlimited prompts</h2>
+        <p>You've used your 2 free generations. Drop your email and get <strong>10 free mega-prompts</strong> delivered instantly, plus unlimited generator access.</p>
+        <div class="email-row">
+          <input type="email" id="email-input" placeholder="your@email.com" />
+          <button class="btn-unlock" onclick="submitEmail()">Continue &#8594;</button>
+        </div>
+        <div class="privacy-note">No spam. Just good prompts. Unsubscribe any time.</div>
+      </div>
+    </div>
+    <!-- SUCCESS -->
+    <div id="step-success" style="display:none;">
+      <div class="success-wrap">
+        <div class="success-icon-wrap">&#9993;&#65039;</div>
+        <h2>On its way to you!</h2>
+        <p>Your 10 free mega-prompts are heading to your inbox. Keep generating. You're in.</p>
+        <button class="btn-primary" style="max-width:260px;margin:0 auto;" onclick="reset()">Keep Generating &#10022;</button>
+      </div>
+    </div>
+  </div>
+  <div class="footer">
+    Built by <a href="https://bloomingcheckout.com" target="_blank">Blooming Checkout</a> &nbsp;&middot;&nbsp; Powered by Claude AI
+  </div>
+<script>
+  // ── TASK LISTS ────────────────────────────────────────────────────────────
+  const TASKS = {
+    florist: [
+      "Write bouquet and product descriptions",
+      "Create a seasonal campaign (Mother's Day, Valentine's, etc.)",
+      "Write SEO collection page copy",
+      "Build an email marketing sequence",
+      "Generate social media captions",
+      "Write Google Ads copy",
+      "Create a customer win-back campaign",
+      "Write FAQ content for my website",
+    ],
+    shopify: [
+      "Write SEO collection page copy",
+      "Write product descriptions that convert",
+      "Create a Google Ads campaign",
+      "Build an email welcome sequence",
+      "Write meta titles and descriptions",
+      "Generate a social media content calendar",
+      "Write a homepage hero section",
+      "Write a blog post for SEO",
+    ],
+    fashion: [
+      "Write product descriptions for clothing and accessories",
+      "Create a new season launch campaign",
+      "Write Instagram and TikTok captions",
+      "Build an email sequence for new arrivals",
+      "Write SEO collection page copy",
+      "Create a lookbook narrative",
+      "Write a styling guide for customers",
+      "Generate Google Shopping ad copy",
+    ],
+    wellness: [
+      "Write service and treatment descriptions",
+      "Create a wellness package launch campaign",
+      "Write Instagram content for a wellness brand",
+      "Build a client nurture email sequence",
+      "Write a blog post for SEO",
+      "Create a referral programme campaign",
+      "Write Google Ads for a local wellness studio",
+      "Generate FAQ content for my website",
+    ],
+    agency: [
+      "Write a client SEO proposal",
+      "Create a client audit summary",
+      "Write cold outreach emails",
+      "Build a content strategy brief",
+      "Write a competitor analysis",
+      "Write case study copy",
+      "Create client onboarding materials",
+      "Write a monthly performance report",
+    ],
+    lifestyle: [
+      "Write brand voice guidelines",
+      "Create Instagram content pillars",
+      "Write a product launch email sequence",
+      "Build product storytelling copy",
+      "Create a lead magnet concept",
+      "Write website homepage copy",
+      "Write influencer outreach emails",
+      "Build a loyalty campaign",
+    ],
+  };
+
+  // ── SYSTEM PROMPT ─────────────────────────────────────────────────────────
+  const SYSTEM = `You are an expert prompt engineer who creates mega-prompts -- detailed, role-based AI instructions that produce professional business outputs in a single use.
+
+Structure every mega-prompt exactly like this:
+
+#CONTEXT:
+[Assign a specific expert AI role relevant to the task]
+
+#GOAL:
+[The precise outcome the user wants to achieve]
+
+#TASK REQUIREMENTS:
+[4-6 specific, measurable criteria the output must meet]
+
+#OUTPUT FORMAT:
+[Exact format, structure, length, and delivery]
+
+#TONE AND VOICE:
+[Specific tone, brand personality, and audience]
+
+#VARIABLES TO CUSTOMISE:
+[List every [BRACKETED_VARIABLE] the user must fill in before using]
+
+Make the prompt detailed, specific, and immediately usable. At least 280 words. So precise that it produces professional-grade output on the first attempt.
+Return ONLY the mega-prompt. No preamble, no explanation, no markdown fences.`;
+
+  // ── STATE ──────────────────────────────────────────────────────────────────
+  let state = {
+    business: null,
+    businessLabel: null,
+    selectedTask: null,
+    customTask: '',
+    promptsGenerated: 0,
+    unlocked: false,
+    generatedPrompt: '',
+  };
+
+  // ── UI HELPERS ─────────────────────────────────────────────────────────────
+  function show(id) {
+    ['step-business','step-task','step-generating','step-result','step-gate','step-success']
+      .forEach(s => document.getElementById(s).style.display = 'none');
+    document.getElementById(id).style.display = 'block';
+  }
+
+  function selectBusiness(id, label) {
+    state.business = id;
+    state.businessLabel = label;
+    state.selectedTask = null;
+    state.customTask = '';
+    renderTasks();
+    show('step-task');
+    updateBtn();
+  }
+
+  function renderTasks() {
+    const list = document.getElementById('task-list');
+    list.innerHTML = '';
+    TASKS[state.business].forEach(t => {
+      const btn = document.createElement('button');
+      btn.className = 'task-btn' + (state.selectedTask === t ? ' selected' : '');
+      btn.textContent = (state.selectedTask === t ? '\u2713  ' : '') + t;
+      btn.onclick = () => selectTask(t);
+      list.appendChild(btn);
+    });
+  }
+
+  function selectTask(t) {
+    state.selectedTask = t;
+    state.customTask = '';
+    document.getElementById('custom-task').value = '';
+    renderTasks();
+    updateBtn();
+  }
+
+  function onCustomInput() {
+    state.customTask = document.getElementById('custom-task').value;
+    if (state.customTask.trim()) { state.selectedTask = null; renderTasks(); }
+    updateBtn();
+  }
+
+  function updateBtn() {
+    document.getElementById('generate-btn').disabled = !(state.selectedTask || state.customTask.trim());
+  }
+
+  function goBack(step) { show('step-' + step); }
+
+  // ── GENERATE ───────────────────────────────────────────────────────────────
+  async function generate() {
+    if (!state.unlocked && state.promptsGenerated >= 2) { show('step-gate'); return; }
+    const task = state.selectedTask || state.customTask.trim();
+    if (!task) return;
+    show('step-generating');
+    try {
+      const res = await fetch('https://api.anthropic.com/v1/messages', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'x-api-key': ANTHROPIC_API_KEY,
+          'anthropic-version': '2023-06-01',
+          'anthropic-dangerous-direct-browser-access': 'true',
+        },
+        body: JSON.stringify({
+          model: 'claude-sonnet-4-20250514',
+          max_tokens: 1000,
+          system: SYSTEM,
+          messages: [{ role: 'user', content: `Create a detailed mega-prompt for a ${state.businessLabel} who needs to: "${task}". Make it highly specific to this business type with realistic customisable variables.` }],
+        }),
+      });
+      const data = await res.json();
+      const text = data.content?.find(b => b.type === 'text')?.text || 'Something went wrong. Please try again.';
+      state.generatedPrompt = text;
+      state.promptsGenerated += 1;
+      document.getElementById('result-task-name').textContent = task;
+      document.getElementById('prompt-output').textContent = text;
+      document.getElementById('copy-btn').textContent = 'Copy Prompt';
+      document.getElementById('copy-btn').classList.remove('copied');
+      show('step-result');
+    } catch (e) {
+      state.generatedPrompt = 'Something went wrong. Please refresh and try again.';
+      document.getElementById('result-task-name').textContent = task;
+      document.getElementById('prompt-output').textContent = state.generatedPrompt;
+      show('step-result');
+    }
+  }
+
+  // ── COPY ────────────────────────────────────────────────────────────────────
+  function copyPrompt() {
+    navigator.clipboard.writeText(state.generatedPrompt).catch(() => {
+      const ta = document.createElement('textarea');
+      ta.value = state.generatedPrompt;
+      document.body.appendChild(ta);
+      ta.select();
+      document.execCommand('copy');
+      document.body.removeChild(ta);
+    });
+    const btn = document.getElementById('copy-btn');
+    btn.textContent = '\u2713 Copied!';
+    btn.classList.add('copied');
+    setTimeout(() => { btn.textContent = 'Copy Prompt'; btn.classList.remove('copied'); }, 2200);
+  }
+
+  // ── KIT (ConvertKit) CONFIG ──────────────────────────────────────────────
+  // Replace these two values before deploying:
+  // KIT_FORM_ID   -> your Kit form ID (found in Kit > Forms > your form > Settings)
+  // KIT_API_KEY   -> your Kit public API key (found in Kit > Settings > Advanced > API)
+  //
+  // IMPORTANT: For production, move KIT_API_KEY to a Vercel environment variable
+  // and proxy this request through /api/subscribe to keep your key server-side.
+  // Ask Cowork to build the /api/subscribe serverless function (Session 3).
+  // ─────────────────────────────────────────────────────────────────────────
+  const ANTHROPIC_API_KEY = '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';
+  const KIT_FORM_ID  = 'YOUR_KIT_FORM_ID';   // e.g. '7654321'
+  const KIT_API_KEY  = 'YOUR_KIT_API_KEY';    // e.g. 'abc123...'
+
+  async function submitEmail() {
+    const emailInput = document.getElementById('email-input');
+    const unlockBtn  = document.querySelector('.btn-unlock');
+    const email = emailInput.value.trim();
+    if (!email.includes('@') || !email.includes('.')) {
+      emailInput.style.borderColor = 'var(--rose)';
+      emailInput.placeholder = 'Please enter a valid email';
+      return;
+    }
+    // Loading state
+    unlockBtn.textContent = '...';
+    unlockBtn.disabled = true;
+    emailInput.disabled = true;
+    // Tag subscriber with source so Kit automation can identify them
+    const tags = ['bc-prompt-generator', 'bc-lead'];
+    if (state.business) tags.push('biz-' + state.business);
+    try {
+      const res = await fetch(
+        `https://api.convertkit.com/v3/forms/${KIT_FORM_ID}/subscribe`,
+        {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            api_key: KIT_API_KEY,
+            email: email,
+            tags: tags,
+            fields: {
+              business_type: state.businessLabel || '',
+              source: 'BC Prompt Generator',
+            },
+          }),
+        }
+      );
+      const data = await res.json();
+      if (data.subscription || data.subscriber) {
+        state.unlocked = true;
+        state.promptsGenerated = 0;
+        show('step-success');
+      } else {
+        throw new Error(data.message || 'Subscription failed');
+      }
+    } catch (err) {
+      // Fail gracefully so user is never blocked
+      console.warn('Kit subscribe error:', err.message);
+      state.unlocked = true;
+      state.promptsGenerated = 0;
+      show('step-success');
+    } finally {
+      unlockBtn.textContent = 'Continue \u2192';
+      unlockBtn.disabled = false;
+      emailInput.disabled = false;
+    }
+  }
+
+  function reset() {
+    state.selectedTask = null;
+    state.customTask = '';
+    document.getElementById('custom-task').value = '';
+    show('step-business');
+  }
+</script>
+</body>
+</html>
