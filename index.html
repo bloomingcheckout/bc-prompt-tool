@@ -3,1606 +3,260 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<!-- SEO META -->
 <title>Free AI Prompt Generator for Small Business | Blooming Checkout</title>
 <meta name="description" content="Generate a professional AI mega-prompt for your exact business in seconds. Built for Shopify stores, florists, fashion boutiques, and lifestyle brands. Free to use, powered by Claude.">
 <meta name="keywords" content="AI prompt generator, AI prompts for small business, ChatGPT prompts, Claude prompts, Shopify AI prompts, free AI tool">
 <link rel="canonical" href="https://bc-prompt-tool.vercel.app/">
-
-<!-- Open Graph -->
 <meta property="og:title" content="Free AI Prompt Generator for Small Business">
 <meta property="og:description" content="Build a custom mega-prompt for your exact business in seconds. Pick your industry, pick your task, get a structured prompt you can copy straight into Claude or ChatGPT.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://bc-prompt-tool.vercel.app/">
 <meta property="og:site_name" content="Blooming Checkout">
-
-<!-- Schema.org -->
 <script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "WebApplication",
-  "name": "Free AI Prompt Generator for Small Business",
-  "description": "Generate professional AI mega-prompts for your exact business in seconds. Built for Shopify stores, florists, fashion boutiques, and lifestyle brands.",
-  "url": "https://bc-prompt-tool.vercel.app/",
-  "applicationCategory": "BusinessApplication",
-  "operatingSystem": "Web",
-  "offers": {
-    "@type": "Offer",
-    "price": "0",
-    "priceCurrency": "USD"
-  },
-  "creator": {
-    "@type": "Organization",
-    "name": "Blooming Checkout",
-    "url": "https://bloomingcheckout.com"
-  }
-}
+{"@context":"https://schema.org","@type":"WebApplication","name":"Free AI Prompt Generator for Small Business","description":"Generate professional AI mega-prompts for your exact business in seconds.","url":"https://bc-prompt-tool.vercel.app/","applicationCategory":"BusinessApplication","operatingSystem":"Web","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"creator":{"@type":"Organization","name":"Blooming Checkout","url":"https://bloomingcheckout.com"}}
 </script>
-
-<!-- Fonts -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500;1,600&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300&display=swap" rel="stylesheet">
-
 <style>
-/* =============================================
-   BC PROMPT TOOL — LANDING PAGE WITH INTEGRATED TOOL
-   Blooming Checkout
-   Colours:
-     Forest Green  #1f5035
-     Gold          #fdbb43
-     Raspberry     #d84760
-     Blush Pink    #f5e0ed
-     Deep Pink     #efa8bb
-     Mauve         #deaed0
-     Cream         #fff1e2
-   ============================================= */
-
-*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
-:root {
-  --green:      #1f5035;
-  --green-mid:  #2e6b50;
-  --gold:       #fdbb43;
-  --raspberry:  #d84760;
-  --pink-deep:  #efa8bb;
-  --pink-blush: #f5e0ed;
-  --pink-mauve: #deaed0;
-  --cream:      #fff1e2;
-  --cream-dk:   #f5e4cc;
-  --ink:        #1c1c1c;
-  --mid:        #4a4a4a;
-  --light:      #888;
-  --ff-head:    'Playfair Display', Georgia, serif;
-  --ff-body:    'DM Sans', system-ui, sans-serif;
-  --radius:     16px;
-}
-
-html { scroll-behavior: smooth; }
-
-body {
-  font-family: var(--ff-body);
-  background: #fff;
-  color: var(--ink);
-  -webkit-font-smoothing: antialiased;
-  overflow-x: hidden;
-}
-
-/* =============================================
-   NAV
-   ============================================= */
-.nav {
-  position: fixed;
-  top: 0; left: 0; right: 0;
-  z-index: 100;
-  padding: 16px 32px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  background: rgba(255,255,255,0.82);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  border-bottom: 1px solid rgba(239,168,187,0.25);
-}
-
-.nav-logo {
-  font-family: var(--ff-head);
-  font-size: 1.05rem;
-  font-weight: 600;
-  color: var(--green);
-  text-decoration: none;
-  letter-spacing: -0.01em;
-}
-
-.nav-logo span {
-  color: var(--pink-deep);
-}
-
-.nav-cta {
-  background: var(--green);
-  color: #fff;
-  font-family: var(--ff-body);
-  font-size: 0.82rem;
-  font-weight: 600;
-  padding: 9px 20px;
-  border-radius: 100px;
-  text-decoration: none;
-  transition: background 0.18s ease;
-}
-
-.nav-cta:hover { background: #163a27; }
-
-/* =============================================
-   HERO
-   ============================================= */
-.hero {
-  min-height: 100vh;
-  padding: 120px 24px 80px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  position: relative;
-  overflow: hidden;
-
-  /* Lush pink-cream gradient mesh */
-  background:
-    radial-gradient(ellipse 80% 60% at 15% 10%, rgba(239,168,187,0.35) 0%, transparent 55%),
-    radial-gradient(ellipse 60% 50% at 85% 20%, rgba(222,174,208,0.28) 0%, transparent 50%),
-    radial-gradient(ellipse 70% 80% at 50% 110%, rgba(253,187,67,0.15) 0%, transparent 55%),
-    radial-gradient(ellipse 90% 70% at 20% 90%, rgba(245,224,237,0.45) 0%, transparent 60%),
-    #fff8f4;
-}
-
-/* Decorative floating circles */
-.hero::before {
-  content: '';
-  position: absolute;
-  top: -120px; right: -80px;
-  width: 480px; height: 480px;
-  background: radial-gradient(circle, rgba(239,168,187,0.22) 0%, transparent 65%);
-  border-radius: 50%;
-  pointer-events: none;
-}
-
-.hero::after {
-  content: '';
-  position: absolute;
-  bottom: -140px; left: -100px;
-  width: 420px; height: 420px;
-  background: radial-gradient(circle, rgba(31,80,53,0.08) 0%, transparent 65%);
-  border-radius: 50%;
-  pointer-events: none;
-}
-
-/* Grain texture overlay */
-.hero-grain {
-  position: absolute;
-  inset: 0;
-  opacity: 0.025;
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
-  pointer-events: none;
-}
-
-.hero-eyebrow {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  background: var(--pink-blush);
-  border: 1px solid rgba(239,168,187,0.5);
-  color: var(--green);
-  font-size: 0.75rem;
-  font-weight: 600;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  padding: 7px 20px;
-  border-radius: 100px;
-  margin-bottom: 32px;
-  position: relative;
-  z-index: 1;
-  animation: fadeSlideUp 0.6s ease both;
-}
-
-.hero h1 {
-  font-family: var(--ff-head);
-  font-size: clamp(2.6rem, 6.5vw, 5rem);
-  font-weight: 700;
-  color: var(--green);
-  line-height: 1.06;
-  max-width: 820px;
-  margin: 0 auto 24px;
-  letter-spacing: -0.02em;
-  position: relative;
-  z-index: 1;
-  animation: fadeSlideUp 0.6s 0.1s ease both;
-}
-
-.hero h1 em {
-  font-style: italic;
-  color: var(--raspberry);
-  font-weight: 600;
-}
-
-.hero h1 .gold {
-  color: var(--gold);
-  font-style: italic;
-}
-
-.hero-sub {
-  font-size: clamp(1rem, 2vw, 1.2rem);
-  color: var(--mid);
-  max-width: 540px;
-  margin: 0 auto 48px;
-  line-height: 1.7;
-  font-weight: 400;
-  position: relative;
-  z-index: 1;
-  animation: fadeSlideUp 0.6s 0.2s ease both;
-}
-
-.hero-pills {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 10px;
-  margin-bottom: 52px;
-  position: relative;
-  z-index: 1;
-  animation: fadeSlideUp 0.6s 0.3s ease both;
-}
-
-.pill {
-  background: rgba(255,255,255,0.75);
-  border: 1.5px solid rgba(239,168,187,0.45);
-  color: var(--green);
-  font-size: 0.83rem;
-  font-weight: 500;
-  padding: 8px 18px;
-  border-radius: 100px;
-  display: flex;
-  align-items: center;
-  gap: 7px;
-  backdrop-filter: blur(8px);
-}
-
-.hero-cta-wrap {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 14px;
-  justify-content: center;
-  position: relative;
-  z-index: 1;
-  animation: fadeSlideUp 0.6s 0.4s ease both;
-}
-
-.btn-hero {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  background: var(--green);
-  color: #fff;
-  font-family: var(--ff-body);
-  font-size: 1rem;
-  font-weight: 600;
-  padding: 16px 32px;
-  border-radius: 14px;
-  text-decoration: none;
-  transition: background 0.18s ease, transform 0.15s ease, box-shadow 0.15s ease;
-  box-shadow: 0 4px 24px rgba(31,80,53,0.22);
-  border: none;
-  cursor: pointer;
-}
-
-.btn-hero:hover {
-  background: #163a27;
-  transform: translateY(-2px);
-  box-shadow: 0 8px 32px rgba(31,80,53,0.28);
-}
-
-.btn-hero-secondary {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  background: rgba(255,255,255,0.7);
-  border: 1.5px solid var(--pink-deep);
-  color: var(--green);
-  font-size: 1rem;
-  font-weight: 500;
-  padding: 16px 32px;
-  border-radius: 14px;
-  text-decoration: none;
-  transition: background 0.18s ease;
-  backdrop-filter: blur(8px);
-}
-
-.btn-hero-secondary:hover {
-  background: var(--pink-blush);
-}
-
-/* Scroll indicator */
-.scroll-hint {
-  position: absolute;
-  bottom: 36px; left: 50%;
-  transform: translateX(-50%);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 8px;
-  font-size: 0.72rem;
-  font-weight: 500;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: var(--pink-deep);
-  z-index: 1;
-  animation: fadeSlideUp 0.6s 0.8s ease both;
-}
-
-.scroll-line {
-  width: 1px;
-  height: 40px;
-  background: linear-gradient(to bottom, var(--pink-deep), transparent);
-  animation: scrollPulse 2s ease-in-out infinite;
-}
-
-/* =============================================
-   SOCIAL PROOF BAR
-   ============================================= */
-.proof-bar {
-  background: var(--pink-blush);
-  border-top: 1px solid rgba(239,168,187,0.4);
-  border-bottom: 1px solid rgba(239,168,187,0.4);
-  padding: 18px 24px;
-  overflow: hidden;
-}
-
-.proof-inner {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 40px;
-  max-width: 900px;
-  margin: 0 auto;
-}
-
-.proof-item {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  font-size: 0.83rem;
-  font-weight: 600;
-  color: var(--green);
-}
-
-.proof-num {
-  font-family: var(--ff-head);
-  font-size: 1.35rem;
-  font-weight: 700;
-  color: var(--raspberry);
-}
-
-/* =============================================
-   TOOL SECTION
-   ============================================= */
-.tool-section {
-  padding: 96px 24px;
-  background: #fff;
-  position: relative;
-}
-
-.tool-section::before {
-  content: '';
-  position: absolute;
-  top: 0; left: 0; right: 0;
-  height: 1px;
-  background: linear-gradient(90deg, transparent, var(--pink-blush), var(--pink-deep), var(--pink-blush), transparent);
-}
-
-.tool-header {
-  text-align: center;
-  max-width: 640px;
-  margin: 0 auto 56px;
-}
-
-.section-eyebrow {
-  display: inline-block;
-  font-size: 0.72rem;
-  font-weight: 700;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: var(--raspberry);
-  margin-bottom: 12px;
-}
-
-.section-title {
-  font-family: var(--ff-head);
-  font-size: clamp(1.8rem, 4vw, 2.8rem);
-  font-weight: 700;
-  color: var(--green);
-  line-height: 1.12;
-  margin-bottom: 16px;
-  letter-spacing: -0.015em;
-}
-
-.section-title em { font-style: italic; color: var(--raspberry); }
-
-.section-body {
-  font-size: 1rem;
-  color: var(--mid);
-  line-height: 1.7;
-}
-
-/* The actual tool card */
-.tool-card {
-  max-width: 680px;
-  margin: 0 auto;
-  background: linear-gradient(145deg, #fff 0%, #fffafc 100%);
-  border-radius: 24px;
-  border: 1.5px solid rgba(239,168,187,0.35);
-  box-shadow:
-    0 2px 8px rgba(239,168,187,0.12),
-    0 16px 64px rgba(31,80,53,0.07),
-    0 0 0 1px rgba(255,255,255,0.8) inset;
-  overflow: hidden;
-}
-
-.tool-card-header {
-  background: linear-gradient(135deg, var(--green) 0%, #2e6b50 100%);
-  padding: 28px 32px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-
-.tool-card-title {
-  font-family: var(--ff-head);
-  font-size: 1.15rem;
-  font-weight: 600;
-  color: #fff;
-  letter-spacing: -0.01em;
-}
-
-.tool-card-badge {
-  background: var(--gold);
-  color: var(--ink);
-  font-size: 0.68rem;
-  font-weight: 700;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  padding: 5px 14px;
-  border-radius: 100px;
-}
-
-/* Step indicator inside tool */
-.tool-steps {
-  display: flex;
-  padding: 20px 32px;
-  gap: 0;
-  border-bottom: 1px solid rgba(239,168,187,0.25);
-  background: var(--pink-blush);
-}
-
-.tool-step-item {
-  flex: 1;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  font-size: 0.75rem;
-  font-weight: 600;
-  color: var(--light);
-}
-
-.tool-step-item.active { color: var(--green); }
-
-.tool-step-num {
-  width: 22px; height: 22px;
-  border-radius: 50%;
-  background: rgba(31,80,53,0.12);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 0.7rem;
-  font-weight: 700;
-  color: var(--mid);
-  flex-shrink: 0;
-}
-
-.tool-step-item.active .tool-step-num {
-  background: var(--green);
-  color: #fff;
-}
-
-.tool-step-divider {
-  flex: 0;
-  width: 24px;
-  height: 1px;
-  background: rgba(239,168,187,0.4);
-  align-self: center;
-  margin: 0 4px;
-}
-
-.tool-body {
-  padding: 32px;
-  min-height: 260px;
-}
-
-/* Industry grid */
-.industry-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 10px;
-}
-
-.industry-btn {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  padding: 14px 16px;
-  border-radius: 12px;
-  border: 1.5px solid rgba(239,168,187,0.3);
-  background: #fff;
-  cursor: pointer;
-  font-family: var(--ff-body);
-  font-size: 0.88rem;
-  font-weight: 500;
-  color: var(--ink);
-  transition: all 0.15s ease;
-  text-align: left;
-}
-
-.industry-btn:hover {
-  border-color: var(--pink-deep);
-  background: var(--pink-blush);
-  transform: translateY(-1px);
-}
-
-.industry-btn.selected {
-  border-color: var(--green);
-  background: rgba(31,80,53,0.04);
-  color: var(--green);
-  font-weight: 600;
-}
-
-.industry-emoji { font-size: 1.2rem; }
-
-/* Tool body elements */
-.tool-body p {
-  font-size: 0.9rem;
-  color: var(--mid);
-  margin-bottom: 20px;
-  font-weight: 500;
-}
-
-/* Task list */
-.task-list {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-  max-height: 280px;
-  overflow-y: auto;
-  margin-bottom: 20px;
-  padding-right: 4px;
-}
-
-.task-list::-webkit-scrollbar { width: 4px; }
-.task-list::-webkit-scrollbar-track { background: var(--pink-blush); border-radius: 4px; }
-.task-list::-webkit-scrollbar-thumb { background: var(--pink-deep); border-radius: 4px; }
-
-.task-btn {
-  background: #fff;
-  border: 1.5px solid rgba(239,168,187,0.2);
-  border-radius: 12px;
-  padding: 13px 16px;
-  color: var(--mid);
-  cursor: pointer;
-  text-align: left;
-  font-family: var(--ff-body);
-  font-size: 0.88rem;
-  font-weight: 400;
-  transition: all 0.15s ease;
-}
-
-.task-btn:hover {
-  background: var(--pink-blush);
-  border-color: var(--pink-deep);
-  color: var(--green);
-}
-
-.task-btn.selected {
-  background: rgba(31,80,53,0.04);
-  border-color: var(--green);
-  color: var(--green);
-  font-weight: 600;
-}
-
-/* Custom task input */
-.tool-custom-label {
-  font-size: 0.7rem;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: var(--pink-mauve);
-  font-weight: 600;
-  margin-bottom: 8px;
-  display: block;
-}
-
-textarea {
-  width: 100%;
-  background: #fff;
-  border: 1.5px solid rgba(239,168,187,0.2);
-  border-radius: 12px;
-  padding: 12px 16px;
-  color: var(--ink);
-  font-size: 0.88rem;
-  font-family: var(--ff-body);
-  font-weight: 400;
-  outline: none;
-  transition: border-color 0.2s, box-shadow 0.2s;
-  resize: vertical;
-  margin-bottom: 16px;
-}
-
-textarea:focus {
-  border-color: var(--gold);
-  box-shadow: 0 0 0 3px rgba(253,187,67,0.15);
-}
-
-textarea::placeholder {
-  color: var(--pink-mauve);
-}
-
-/* Buttons */
-.btn-generate {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 10px;
-  width: 100%;
-  background: linear-gradient(135deg, var(--green) 0%, #2e6b50 100%);
-  color: #fff;
-  font-family: var(--ff-body);
-  font-size: 1rem;
-  font-weight: 700;
-  padding: 17px 24px;
-  border-radius: 14px;
-  border: none;
-  cursor: pointer;
-  transition: opacity 0.18s ease, transform 0.15s ease;
-  box-shadow: 0 4px 20px rgba(31,80,53,0.25);
-  text-decoration: none;
-}
-
-.btn-generate:hover {
-  opacity: 0.9;
-  transform: translateY(-1px);
-}
-
-.btn-generate:disabled {
-  opacity: 0.5;
-  cursor: not-allowed;
-}
-
-.btn-generate-spark { font-size: 1.1rem; }
-
-.btn-copy-tool {
-  flex: 1;
-  background: var(--green);
-  border: none;
-  border-radius: 12px;
-  padding: 13px;
-  color: var(--gold);
-  cursor: pointer;
-  font-size: 0.88rem;
-  font-family: var(--ff-body);
-  font-weight: 500;
-  transition: all 0.2s;
-}
-
-.btn-copy-tool:hover { opacity: 0.88; }
-
-.btn-copy-tool.copied {
-  background: linear-gradient(135deg, var(--gold), #f0a830);
-  color: var(--green);
-}
-
-.btn-secondary-tool {
-  flex: 1;
-  background: #fff;
-  border: 1.5px solid var(--pink-deep);
-  border-radius: 12px;
-  padding: 13px;
-  color: var(--green);
-  cursor: pointer;
-  font-size: 0.88rem;
-  font-family: var(--ff-body);
-  font-weight: 500;
-  transition: all 0.2s;
-}
-
-.btn-secondary-tool:hover {
-  background: var(--pink-blush);
-  border-color: var(--green);
-}
-
-.back-btn-tool {
-  background: none;
-  border: none;
-  color: var(--pink-mauve);
-  cursor: pointer;
-  font-size: 0.82rem;
-  font-family: var(--ff-body);
-  padding: 0;
-  margin-bottom: 22px;
-  display: flex;
-  align-items: center;
-  gap: 4px;
-  transition: color 0.2s;
-  font-weight: 400;
-}
-
-.back-btn-tool:hover { color: var(--raspberry); }
-
-/* Loader */
-.loader-wrap {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 52px 0;
-  gap: 22px;
-}
-
-.spinner-ring {
-  width: 56px;
-  height: 56px;
-  border-radius: 50%;
-  border: 3px solid var(--pink-blush);
-  border-top-color: var(--raspberry);
-  border-right-color: var(--gold);
-  animation: spin 0.9s linear infinite;
-}
-
-@keyframes spin { to { transform: rotate(360deg); } }
-
-.loader-wrap p {
-  color: var(--green);
-  font-size: 1.1rem;
-  font-family: var(--ff-head);
-  font-weight: 600;
-}
-
-.loader-wrap small {
-  color: var(--pink-mauve);
-  font-size: 0.82rem;
-  font-weight: 400;
-}
-
-/* Result display */
-.result-tag {
-  font-size: 0.7rem;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: var(--raspberry);
-  font-weight: 600;
-  background: var(--pink-blush);
-  display: inline-block;
-  border-radius: 100px;
-  padding: 4px 12px;
-  margin-bottom: 8px;
-}
-
-.result-task {
-  font-family: var(--ff-head);
-  color: var(--green);
-  font-size: 1.15rem;
-  font-weight: 600;
-  margin-bottom: 16px;
-}
-
-.prompt-box {
-  background: linear-gradient(135deg, #f9f5f0, var(--cream));
-  border: 1.5px solid var(--pink-blush);
-  border-radius: 16px;
-  padding: 22px;
-  color: var(--mid);
-  font-size: 0.82rem;
-  line-height: 1.8;
-  font-family: 'Courier New', monospace;
-  white-space: pre-wrap;
-  max-height: 320px;
-  overflow-y: auto;
-  margin-bottom: 16px;
-  box-shadow: inset 0 2px 8px rgba(239,168,187,0.04);
-}
-
-.prompt-box::-webkit-scrollbar { width: 4px; }
-.prompt-box::-webkit-scrollbar-thumb { background: var(--pink-deep); border-radius: 4px; }
-
-.action-row {
-  display: flex;
-  gap: 10px;
-  margin-bottom: 24px;
-}
-
-/* Divider */
-.divider-tool {
-  height: 1px;
-  background: linear-gradient(90deg, transparent, var(--pink-deep), transparent);
-  margin: 20px 0;
-}
-
-/* Upsell */
-.upsell {
-  background: linear-gradient(135deg, var(--pink-blush) 0%, #fff8ee 100%);
-  border: 1.5px solid var(--pink-deep);
-  border-radius: 20px;
-  padding: 24px;
-  position: relative;
-  overflow: hidden;
-}
-
-.upsell::before {
-  content: '\2726';
-  position: absolute;
-  right: 20px;
-  top: 16px;
-  font-size: 32px;
-  color: var(--gold);
-  opacity: 0.4;
-}
-
-.upsell p {
-  color: var(--green);
-  font-size: 0.93rem;
-  line-height: 1.6;
-  margin-bottom: 16px;
-  font-weight: 400;
-}
-
-.upsell a {
-  display: inline-block;
-  background: linear-gradient(135deg, var(--gold), var(--raspberry));
-  border-radius: 10px;
-  padding: 11px 24px;
-  color: #fff;
-  font-size: 0.88rem;
-  font-weight: 600;
-  text-decoration: none;
-  transition: all 0.2s;
-  box-shadow: 0 4px 16px rgba(216,71,96,0.25);
-}
-
-.upsell a:hover {
-  transform: translateY(-1px);
-  box-shadow: 0 6px 20px rgba(216,71,96,0.35);
-}
-
-/* Email gate */
-.gate-wrap { text-align: center; padding: 12px 0; }
-
-.gate-icon-wrap {
-  width: 72px;
-  height: 72px;
-  background: linear-gradient(135deg, var(--pink-blush), #fde8f2);
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 34px;
-  margin: 0 auto 20px;
-  border: 2px solid var(--pink-deep);
-}
-
-.gate-wrap h2 {
-  font-family: var(--ff-head);
-  color: var(--green);
-  font-size: 1.4rem;
-  font-weight: 600;
-  margin-bottom: 10px;
-}
-
-.gate-wrap p {
-  color: var(--mid);
-  font-size: 0.95rem;
-  line-height: 1.65;
-  font-weight: 400;
-  margin-bottom: 28px;
-}
-
-.email-row {
-  display: flex;
-  gap: 10px;
-  margin-bottom: 12px;
-}
-
-.email-row input {
-  flex: 1;
-  min-width: 0;
-  background: #fff;
-  border: 1.5px solid var(--pink-blush);
-  border-radius: 12px;
-  padding: 12px 16px;
-  color: var(--ink);
-  font-size: 0.88rem;
-  font-family: var(--ff-body);
-  outline: none;
-  transition: border-color 0.2s;
-}
-
-.email-row input:focus {
-  border-color: var(--gold);
-}
-
-.btn-unlock {
-  background: linear-gradient(135deg, var(--gold), var(--raspberry));
-  border: none;
-  border-radius: 12px;
-  padding: 12px 22px;
-  color: #fff;
-  font-size: 0.88rem;
-  font-family: var(--ff-body);
-  font-weight: 600;
-  cursor: pointer;
-  white-space: nowrap;
-  transition: all 0.2s;
-  box-shadow: 0 4px 16px rgba(216,71,96,0.3);
-}
-
-.btn-unlock:hover { transform: translateY(-1px); }
-.btn-unlock:disabled { opacity: 0.6; cursor: not-allowed; }
-
-.privacy-note {
-  color: var(--pink-mauve);
-  font-size: 0.75rem;
-  font-weight: 400;
-}
-
-/* Success */
-.success-wrap { text-align: center; padding: 12px 0; }
-
-.success-icon-wrap {
-  width: 72px;
-  height: 72px;
-  background: linear-gradient(135deg, #e8f7ee, #d4f0de);
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 34px;
-  margin: 0 auto 20px;
-  border: 2px solid #a8dab8;
-}
-
-.success-wrap h2 {
-  font-family: var(--ff-head);
-  color: var(--green);
-  font-size: 1.4rem;
-  font-weight: 600;
-  margin-bottom: 10px;
-}
-
-.success-wrap p {
-  color: var(--mid);
-  font-size: 0.95rem;
-  line-height: 1.65;
-  font-weight: 400;
-  margin-bottom: 28px;
-}
-
-/* =============================================
-   HOW IT WORKS
-   ============================================= */
-.how-section {
-  padding: 96px 24px;
-  background: linear-gradient(180deg, var(--pink-blush) 0%, #fff 100%);
-  position: relative;
-}
-
-.how-inner {
-  max-width: 1100px;
-  margin: 0 auto;
-}
-
-.how-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 32px;
-  margin-top: 56px;
-}
-
-.how-card {
-  background: #fff;
-  border-radius: 20px;
-  padding: 36px 28px;
-  border: 1.5px solid rgba(239,168,187,0.3);
-  position: relative;
-  overflow: hidden;
-}
-
-.how-card::after {
-  content: '';
-  position: absolute;
-  bottom: 0; right: 0;
-  width: 80px; height: 80px;
-  background: radial-gradient(circle at bottom right, rgba(245,224,237,0.6), transparent 70%);
-  border-radius: 0;
-}
-
-.how-num {
-  font-family: var(--ff-head);
-  font-size: 3.5rem;
-  font-weight: 700;
-  color: var(--pink-blush);
-  line-height: 1;
-  margin-bottom: 16px;
-  letter-spacing: -0.04em;
-}
-
-.how-title {
-  font-family: var(--ff-head);
-  font-size: 1.2rem;
-  font-weight: 700;
-  color: var(--green);
-  margin-bottom: 10px;
-  line-height: 1.25;
-}
-
-.how-body {
-  font-size: 0.9rem;
-  color: var(--mid);
-  line-height: 1.65;
-}
-
-/* =============================================
-   PROMPT EXAMPLES
-   ============================================= */
-.examples-section {
-  padding: 96px 24px;
-  background: var(--green);
-  position: relative;
-  overflow: hidden;
-}
-
-.examples-section::before {
-  content: '';
-  position: absolute;
-  top: -200px; right: -150px;
-  width: 600px; height: 600px;
-  background: radial-gradient(circle, rgba(239,168,187,0.12) 0%, transparent 60%);
-  border-radius: 50%;
-  pointer-events: none;
-}
-
-.examples-section::after {
-  content: '';
-  position: absolute;
-  bottom: -150px; left: -100px;
-  width: 500px; height: 500px;
-  background: radial-gradient(circle, rgba(253,187,67,0.1) 0%, transparent 60%);
-  border-radius: 50%;
-  pointer-events: none;
-}
-
-.examples-inner {
-  max-width: 1100px;
-  margin: 0 auto;
-  position: relative;
-  z-index: 1;
-}
-
-.examples-eyebrow {
-  font-size: 0.72rem;
-  font-weight: 700;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: var(--pink-deep);
-  display: block;
-  margin-bottom: 12px;
-  text-align: center;
-}
-
-.examples-title {
-  font-family: var(--ff-head);
-  font-size: clamp(1.8rem, 4vw, 2.8rem);
-  font-weight: 700;
-  color: #fff;
-  text-align: center;
-  margin-bottom: 56px;
-  line-height: 1.12;
-}
-
-.examples-title em { color: var(--gold); font-style: italic; }
-
-.examples-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 20px;
-}
-
-.example-card {
-  background: rgba(255,255,255,0.06);
-  border: 1px solid rgba(255,255,255,0.12);
-  border-radius: 16px;
-  padding: 28px;
-  transition: background 0.2s ease;
-}
-
-.example-card:hover {
-  background: rgba(255,255,255,0.09);
-}
-
-.example-label {
-  display: inline-flex;
-  align-items: center;
-  gap: 7px;
-  background: rgba(239,168,187,0.18);
-  border: 1px solid rgba(239,168,187,0.25);
-  color: var(--pink-deep);
-  font-size: 0.72rem;
-  font-weight: 600;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  padding: 5px 12px;
-  border-radius: 100px;
-  margin-bottom: 16px;
-}
-
-.example-text {
-  font-size: 0.88rem;
-  color: rgba(255,255,255,0.75);
-  line-height: 1.65;
-  font-style: italic;
-  font-family: var(--ff-head);
-  font-weight: 400;
-}
-
-/* =============================================
-   FOR WHOM
-   ============================================= */
-.whom-section {
-  padding: 96px 24px;
-  background: #fff;
-}
-
-.whom-inner {
-  max-width: 1100px;
-  margin: 0 auto;
-}
-
-.whom-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-  gap: 16px;
-  margin-top: 56px;
-}
-
-.whom-card {
-  background: linear-gradient(145deg, var(--pink-blush), #fff5fa);
-  border: 1.5px solid rgba(239,168,187,0.35);
-  border-radius: 18px;
-  padding: 28px 20px;
-  text-align: center;
-  transition: transform 0.18s ease, box-shadow 0.18s ease;
-}
-
-.whom-card:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 10px 36px rgba(239,168,187,0.22);
-}
-
-.whom-emoji { font-size: 2rem; margin-bottom: 12px; display: block; }
-
-.whom-title {
-  font-family: var(--ff-head);
-  font-size: 0.95rem;
-  font-weight: 700;
-  color: var(--green);
-  margin-bottom: 6px;
-}
-
-.whom-body {
-  font-size: 0.78rem;
-  color: var(--mid);
-  line-height: 1.5;
-}
-
-/* =============================================
-   SEO CONTENT SECTION
-   ============================================= */
-.seo-section {
-  padding: 96px 24px;
-  background: var(--cream);
-  border-top: 1px solid rgba(239,168,187,0.3);
-}
-
-.seo-inner {
-  max-width: 820px;
-  margin: 0 auto;
-}
-
-.seo-inner h2 {
-  font-family: var(--ff-head);
-  font-size: clamp(1.5rem, 3vw, 2rem);
-  font-weight: 700;
-  color: var(--green);
-  margin: 0 0 16px;
-  line-height: 1.2;
-}
-
-.seo-inner h3 {
-  font-family: var(--ff-head);
-  font-size: 1.15rem;
-  font-weight: 600;
-  color: var(--green);
-  margin: 36px 0 12px;
-}
-
-.seo-inner p {
-  font-size: 0.95rem;
-  color: var(--mid);
-  line-height: 1.8;
-  margin-bottom: 16px;
-}
-
-.seo-inner ul {
-  margin: 0 0 16px 20px;
-}
-
-.seo-inner li {
-  font-size: 0.93rem;
-  color: var(--mid);
-  line-height: 1.7;
-  margin-bottom: 6px;
-}
-
-/* =============================================
-   FAQ
-   ============================================= */
-.faq-section {
-  padding: 96px 24px;
-  background: #fff;
-}
-
-.faq-inner {
-  max-width: 720px;
-  margin: 0 auto;
-}
-
-.faq-list {
-  margin-top: 48px;
-}
-
-.faq-item {
-  border-bottom: 1px solid rgba(239,168,187,0.4);
-}
-
-.faq-item:first-child { border-top: 1px solid rgba(239,168,187,0.4); }
-
-.faq-item summary {
-  padding: 22px 4px;
-  font-size: 0.97rem;
-  font-weight: 600;
-  color: var(--ink);
-  cursor: pointer;
-  list-style: none;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 16px;
-  line-height: 1.4;
-}
-
-.faq-item summary::-webkit-details-marker { display: none; }
-
-.faq-item summary::after {
-  content: '+';
-  font-size: 1.4rem;
-  font-weight: 300;
-  color: var(--raspberry);
-  min-width: 20px;
-  text-align: right;
-  flex-shrink: 0;
-}
-
-.faq-item[open] summary::after { content: '−'; }
-
-.faq-answer {
-  padding: 0 4px 22px;
-  font-size: 0.9rem;
-  color: var(--mid);
-  line-height: 1.75;
-}
-
-/* =============================================
-   BOTTOM CTA
-   ============================================= */
-.cta-section {
-  padding: 96px 24px;
-  text-align: center;
-  position: relative;
-  overflow: hidden;
-  background:
-    radial-gradient(ellipse 80% 60% at 20% 30%, rgba(239,168,187,0.4) 0%, transparent 55%),
-    radial-gradient(ellipse 70% 70% at 80% 60%, rgba(222,174,208,0.35) 0%, transparent 55%),
-    radial-gradient(ellipse 60% 80% at 50% 110%, rgba(253,187,67,0.12) 0%, transparent 55%),
-    #fff8f4;
-}
-
-.cta-section h2 {
-  font-family: var(--ff-head);
-  font-size: clamp(2rem, 5vw, 3.2rem);
-  font-weight: 700;
-  color: var(--green);
-  margin-bottom: 16px;
-  line-height: 1.1;
-  max-width: 640px;
-  margin-left: auto;
-  margin-right: auto;
-  margin-bottom: 20px;
-}
-
-.cta-section h2 em { color: var(--raspberry); font-style: italic; }
-
-.cta-section p {
-  font-size: 1.05rem;
-  color: var(--mid);
-  max-width: 440px;
-  margin: 0 auto 40px;
-  line-height: 1.65;
-}
-
-/* =============================================
-   FOOTER
-   ============================================= */
-.footer {
-  background: var(--green);
-  padding: 32px 24px;
-  text-align: center;
-}
-
-.footer-inner {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  align-items: center;
-  max-width: 900px;
-  margin: 0 auto;
-  gap: 16px;
-}
-
-.footer-logo {
-  font-family: var(--ff-head);
-  font-size: 1rem;
-  font-weight: 600;
-  color: rgba(255,255,255,0.9);
-  text-decoration: none;
-}
-
-.footer-links {
-  display: flex;
-  gap: 24px;
-}
-
-.footer-links a {
-  font-size: 0.82rem;
-  color: rgba(255,255,255,0.55);
-  text-decoration: none;
-  transition: color 0.15s;
-}
-
-.footer-links a:hover { color: var(--pink-deep); }
-
-.footer-copy {
-  font-size: 0.78rem;
-  color: rgba(255,255,255,0.35);
-}
-
-/* =============================================
-   ANIMATIONS
-   ============================================= */
-@keyframes fadeSlideUp {
-  from { opacity: 0; transform: translateY(20px); }
-  to   { opacity: 1; transform: translateY(0); }
-}
-
-@keyframes scrollPulse {
-  0%, 100% { opacity: 0.4; }
-  50%       { opacity: 1; }
-}
-
-/* =============================================
-   RESPONSIVE
-   ============================================= */
-@media (max-width: 900px) {
-  .how-grid { grid-template-columns: 1fr; }
-  .whom-grid { grid-template-columns: repeat(2, 1fr); }
-}
-
-@media (max-width: 640px) {
-  .nav { padding: 14px 20px; }
-  .hero { padding: 100px 20px 72px; }
-  .tool-card-header { padding: 20px 24px; }
-  .tool-body { padding: 24px; }
-  .tool-steps { padding: 16px 24px; flex-wrap: wrap; gap: 8px; }
-  .industry-grid { grid-template-columns: 1fr; }
-  .how-grid { grid-template-columns: 1fr; }
-  .examples-grid { grid-template-columns: 1fr; }
-  .whom-grid { grid-template-columns: 1fr 1fr; }
-  .footer-inner { flex-direction: column; text-align: center; }
-  .footer-links { justify-content: center; }
-  .proof-inner { gap: 20px; }
-  .hero-cta-wrap { flex-direction: column; align-items: center; }
-  .btn-hero, .btn-hero-secondary { width: 100%; max-width: 320px; justify-content: center; }
-  .action-row { flex-direction: column; gap: 10px; }
-  .email-row { flex-direction: column; }
-}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --green:#1f5035;--green-mid:#2e6b50;--gold:#fdbb43;--raspberry:#d84760;
+  --pink-deep:#efa8bb;--pink-blush:#f5e0ed;--pink-mauve:#deaed0;
+  --cream:#fff1e2;--cream-dk:#f5e4cc;--ink:#1c1c1c;--mid:#4a4a4a;--light:#888;
+  --ff-head:'Playfair Display',Georgia,serif;--ff-body:'DM Sans',system-ui,sans-serif;
+}
+html{scroll-behavior:smooth}
+body{font-family:var(--ff-body);background:#fff;color:var(--ink);-webkit-font-smoothing:antialiased;overflow-x:hidden}
+.nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:16px 32px;display:flex;align-items:center;justify-content:space-between;background:rgba(255,255,255,0.88);backdrop-filter:blur(16px);border-bottom:1px solid rgba(239,168,187,0.25)}
+.nav-logo{font-family:var(--ff-head);font-size:1.05rem;font-weight:600;color:var(--green);text-decoration:none}
+.nav-logo span{color:var(--pink-deep)}
+.nav-cta{background:var(--green);color:#fff;font-family:var(--ff-body);font-size:0.82rem;font-weight:600;padding:9px 20px;border-radius:100px;text-decoration:none}
+.hero{min-height:100vh;padding:120px 24px 80px;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;position:relative;overflow:hidden;background:radial-gradient(ellipse 80% 60% at 15% 10%,rgba(239,168,187,0.38) 0%,transparent 55%),radial-gradient(ellipse 60% 50% at 85% 20%,rgba(222,174,208,0.3) 0%,transparent 50%),radial-gradient(ellipse 90% 70% at 20% 90%,rgba(245,224,237,0.5) 0%,transparent 60%),#fff8f4}
+.hero::before{content:'';position:absolute;top:-120px;right:-80px;width:480px;height:480px;background:radial-gradient(circle,rgba(239,168,187,0.25) 0%,transparent 65%);border-radius:50%;pointer-events:none}
+.hero-grain{position:absolute;inset:0;opacity:0.025;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");pointer-events:none}
+.hero-eyebrow{display:inline-flex;align-items:center;gap:8px;background:var(--pink-blush);border:1px solid rgba(239,168,187,0.5);color:var(--green);font-size:0.75rem;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;padding:7px 20px;border-radius:100px;margin-bottom:32px;position:relative;z-index:1}
+.hero h1{font-family:var(--ff-head);font-size:clamp(2.6rem,6.5vw,5rem);font-weight:700;color:var(--green);line-height:1.06;max-width:820px;margin:0 auto 24px;letter-spacing:-0.02em;position:relative;z-index:1}
+.hero h1 em{font-style:italic;color:var(--raspberry);font-weight:600}
+.hero-sub{font-size:clamp(1rem,2vw,1.2rem);color:var(--mid);max-width:540px;margin:0 auto 48px;line-height:1.7;position:relative;z-index:1}
+.hero-pills{display:flex;flex-wrap:wrap;justify-content:center;gap:10px;margin-bottom:52px;position:relative;z-index:1}
+.pill{background:rgba(255,255,255,0.8);border:1.5px solid rgba(239,168,187,0.45);color:var(--green);font-size:0.83rem;font-weight:500;padding:8px 18px;border-radius:100px;display:flex;align-items:center;gap:7px}
+.hero-cta-wrap{display:flex;flex-wrap:wrap;gap:14px;justify-content:center;position:relative;z-index:1}
+.btn-hero{display:inline-flex;align-items:center;gap:8px;background:var(--green);color:#fff;font-family:var(--ff-body);font-size:1rem;font-weight:600;padding:16px 32px;border-radius:14px;text-decoration:none;box-shadow:0 4px 24px rgba(31,80,53,0.22);border:none;cursor:pointer}
+.btn-hero-secondary{display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,0.7);border:1.5px solid var(--pink-deep);color:var(--green);font-size:1rem;font-weight:500;padding:16px 32px;border-radius:14px;text-decoration:none}
+.scroll-hint{position:absolute;bottom:36px;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;z-index:1}
+.scroll-line{width:1px;height:40px;background:linear-gradient(to bottom,var(--pink-deep),transparent)}
+.proof-bar{background:var(--pink-blush);border-top:1px solid rgba(239,168,187,0.4);border-bottom:1px solid rgba(239,168,187,0.4);padding:18px 24px}
+.proof-inner{display:flex;flex-wrap:wrap;justify-content:center;gap:40px;max-width:900px;margin:0 auto}
+.proof-item{display:flex;align-items:center;gap:10px;font-size:0.83rem;font-weight:600;color:var(--green)}
+.proof-num{font-family:var(--ff-head);font-size:1.35rem;font-weight:700;color:var(--raspberry)}
+.tool-section{padding:96px 24px;background:#fff;position:relative}
+.tool-section::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,var(--pink-blush),var(--pink-deep),var(--pink-blush),transparent)}
+.tool-header{text-align:center;max-width:640px;margin:0 auto 56px}
+.section-eyebrow{display:inline-block;font-size:0.72rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--raspberry);margin-bottom:12px}
+.section-title{font-family:var(--ff-head);font-size:clamp(1.8rem,4vw,2.8rem);font-weight:700;color:var(--green);line-height:1.12;margin-bottom:16px}
+.section-title em{font-style:italic;color:var(--raspberry)}
+.section-body{font-size:1rem;color:var(--mid);line-height:1.7}
+.tool-card{max-width:680px;margin:0 auto;background:#fff;border-radius:24px;border:1.5px solid rgba(239,168,187,0.35);box-shadow:0 2px 8px rgba(239,168,187,0.12),0 16px 64px rgba(31,80,53,0.07);overflow:hidden}
+.tool-card-header{background:linear-gradient(135deg,var(--green) 0%,#2e6b50 100%);padding:28px 32px;display:flex;align-items:center;justify-content:space-between}
+.tool-card-title{font-family:var(--ff-head);font-size:1.15rem;font-weight:600;color:#fff}
+.tool-card-badge{background:var(--gold);color:var(--ink);font-size:0.68rem;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;padding:5px 14px;border-radius:100px}
+.tool-steps{display:flex;padding:20px 32px;border-bottom:1px solid rgba(239,168,187,0.25);background:var(--pink-blush)}
+.tool-step-item{flex:1;display:flex;align-items:center;gap:8px;font-size:0.75rem;font-weight:600;color:var(--light)}
+.tool-step-item.active{color:var(--green)}
+.tool-step-num{width:22px;height:22px;border-radius:50%;background:rgba(31,80,53,0.12);display:flex;align-items:center;justify-content:center;font-size:0.7rem;font-weight:700;color:var(--mid);flex-shrink:0}
+.tool-step-item.active .tool-step-num{background:var(--green);color:#fff}
+.tool-step-divider{flex:0;width:24px;height:1px;background:rgba(239,168,187,0.4);align-self:center;margin:0 4px}
+.tool-body{padding:32px;min-height:260px}
+.tool-body p{font-size:0.9rem;color:var(--mid);margin-bottom:20px;font-weight:500}
+.industry-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.industry-btn{display:flex;align-items:center;gap:10px;padding:14px 16px;border-radius:12px;border:1.5px solid rgba(239,168,187,0.3);background:#fff;cursor:pointer;font-family:var(--ff-body);font-size:0.88rem;font-weight:500;color:var(--ink);text-align:left;transition:all 0.15s ease}
+.industry-btn:hover{border-color:var(--pink-deep);background:var(--pink-blush)}
+.industry-btn.selected{border-color:var(--green);background:rgba(31,80,53,0.04);color:var(--green);font-weight:600}
+.industry-emoji{font-size:1.2rem}
+.task-list{display:flex;flex-direction:column;gap:8px;max-height:280px;overflow-y:auto;margin-bottom:20px;padding-right:4px}
+.task-list::-webkit-scrollbar{width:4px}
+.task-list::-webkit-scrollbar-thumb{background:var(--pink-deep);border-radius:4px}
+.task-btn{background:#fff;border:1.5px solid rgba(239,168,187,0.2);border-radius:12px;padding:13px 16px;color:var(--mid);cursor:pointer;text-align:left;font-family:var(--ff-body);font-size:0.88rem;font-weight:400;transition:all 0.15s ease}
+.task-btn:hover{background:var(--pink-blush);border-color:var(--pink-deep);color:var(--green)}
+.task-btn.selected{background:rgba(31,80,53,0.04);border-color:var(--green);color:var(--green);font-weight:600}
+.tool-custom-label{font-size:0.7rem;letter-spacing:0.08em;text-transform:uppercase;color:var(--pink-mauve);font-weight:600;margin-bottom:8px;display:block}
+textarea{width:100%;background:#fff;border:1.5px solid rgba(239,168,187,0.2);border-radius:12px;padding:12px 16px;color:var(--ink);font-size:0.88rem;font-family:var(--ff-body);outline:none;resize:vertical;margin-bottom:16px}
+textarea:focus{border-color:var(--gold)}
+textarea::placeholder{color:var(--pink-mauve)}
+.tool-footer{padding:24px 32px 32px;border-top:1px solid rgba(239,168,187,0.2)}
+.btn-generate{display:flex;align-items:center;justify-content:center;gap:10px;width:100%;background:linear-gradient(135deg,var(--green) 0%,#2e6b50 100%);color:#fff;font-family:var(--ff-body);font-size:1rem;font-weight:700;padding:17px 24px;border-radius:14px;border:none;cursor:pointer;box-shadow:0 4px 20px rgba(31,80,53,0.25)}
+.btn-generate:disabled{opacity:0.5;cursor:not-allowed}
+.btn-copy-tool{flex:1;background:var(--green);border:none;border-radius:12px;padding:13px;color:var(--gold);cursor:pointer;font-size:0.88rem;font-family:var(--ff-body);font-weight:500}
+.btn-copy-tool.copied{background:linear-gradient(135deg,var(--gold),#f0a830);color:var(--green)}
+.btn-secondary-tool{flex:1;background:#fff;border:1.5px solid var(--pink-deep);border-radius:12px;padding:13px;color:var(--green);cursor:pointer;font-size:0.88rem;font-family:var(--ff-body);font-weight:500}
+.back-btn-tool{background:none;border:none;color:var(--pink-mauve);cursor:pointer;font-size:0.82rem;font-family:var(--ff-body);padding:0;margin-bottom:22px;display:flex;align-items:center;gap:4px}
+.loader-wrap{display:flex;flex-direction:column;align-items:center;padding:52px 0;gap:22px}
+.spinner-ring{width:56px;height:56px;border-radius:50%;border:3px solid var(--pink-blush);border-top-color:var(--raspberry);border-right-color:var(--gold);animation:spin 0.9s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+.loader-wrap p{color:var(--green);font-size:1.1rem;font-family:var(--ff-head);font-weight:600}
+.loader-wrap small{color:var(--pink-mauve);font-size:0.82rem}
+.result-tag{font-size:0.7rem;letter-spacing:0.08em;text-transform:uppercase;color:var(--raspberry);font-weight:600;background:var(--pink-blush);display:inline-block;border-radius:100px;padding:4px 12px;margin-bottom:8px}
+.result-task{font-family:var(--ff-head);color:var(--green);font-size:1.15rem;font-weight:600;margin-bottom:16px}
+.prompt-box{background:linear-gradient(135deg,#f9f5f0,var(--cream));border:1.5px solid var(--pink-blush);border-radius:16px;padding:22px;color:var(--mid);font-size:0.82rem;line-height:1.8;font-family:'Courier New',monospace;white-space:pre-wrap;max-height:320px;overflow-y:auto;margin-bottom:16px}
+.action-row{display:flex;gap:10px;margin-bottom:24px}
+.divider-tool{height:1px;background:linear-gradient(90deg,transparent,var(--pink-deep),transparent);margin:20px 0}
+.upsell{background:linear-gradient(135deg,var(--pink-blush) 0%,#fff8ee 100%);border:1.5px solid var(--pink-deep);border-radius:20px;padding:24px;position:relative;overflow:hidden}
+.upsell p{color:var(--green);font-size:0.93rem;line-height:1.6;margin-bottom:16px}
+.upsell a{display:inline-block;background:var(--green);border-radius:10px;padding:11px 24px;color:#fff;font-size:0.88rem;font-weight:600;text-decoration:none}
+.gate-wrap{text-align:center;padding:12px 0}
+.gate-icon-wrap{width:72px;height:72px;background:linear-gradient(135deg,var(--pink-blush),#fde8f2);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:34px;margin:0 auto 20px;border:2px solid var(--pink-deep)}
+.gate-wrap h2{font-family:var(--ff-head);color:var(--green);font-size:1.4rem;font-weight:600;margin-bottom:10px}
+.gate-wrap p{color:var(--mid);font-size:0.95rem;line-height:1.65;margin-bottom:28px}
+.email-row{display:flex;gap:10px;margin-bottom:12px}
+.email-row input{flex:1;min-width:0;background:#fff;border:1.5px solid var(--pink-blush);border-radius:12px;padding:12px 16px;color:var(--ink);font-size:0.88rem;font-family:var(--ff-body);outline:none}
+.email-row input:focus{border-color:var(--gold)}
+.btn-unlock{background:linear-gradient(135deg,var(--gold),var(--raspberry));border:none;border-radius:12px;padding:12px 22px;color:#fff;font-size:0.88rem;font-family:var(--ff-body);font-weight:600;cursor:pointer;white-space:nowrap}
+.btn-unlock:disabled{opacity:0.6;cursor:not-allowed}
+.privacy-note{color:var(--pink-mauve);font-size:0.75rem}
+.success-wrap{text-align:center;padding:12px 0}
+.success-icon-wrap{width:72px;height:72px;background:linear-gradient(135deg,#e8f7ee,#d4f0de);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:34px;margin:0 auto 20px;border:2px solid #a8dab8}
+.success-wrap h2{font-family:var(--ff-head);color:var(--green);font-size:1.4rem;font-weight:600;margin-bottom:10px}
+.success-wrap p{color:var(--mid);font-size:0.95rem;line-height:1.65;margin-bottom:28px}
+.how-section{padding:96px 24px;background:linear-gradient(180deg,var(--pink-blush) 0%,#fff 100%)}
+.how-inner{max-width:1100px;margin:0 auto}
+.how-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:32px;margin-top:56px}
+.how-card{background:#fff;border-radius:20px;padding:36px 28px;border:1.5px solid rgba(239,168,187,0.3)}
+.how-num{font-family:var(--ff-head);font-size:3.5rem;font-weight:700;color:var(--pink-blush);line-height:1;margin-bottom:16px}
+.how-title{font-family:var(--ff-head);font-size:1.2rem;font-weight:700;color:var(--green);margin-bottom:10px}
+.how-body{font-size:0.9rem;color:var(--mid);line-height:1.65}
+.examples-section{padding:96px 24px;background:var(--green);position:relative;overflow:hidden}
+.examples-inner{max-width:1100px;margin:0 auto;position:relative;z-index:1}
+.examples-eyebrow{font-size:0.72rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:var(--pink-deep);display:block;margin-bottom:12px;text-align:center}
+.examples-title{font-family:var(--ff-head);font-size:clamp(1.8rem,4vw,2.8rem);font-weight:700;color:#fff;text-align:center;margin-bottom:56px;line-height:1.12}
+.examples-title em{color:var(--gold);font-style:italic}
+.examples-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:20px}
+.example-card{background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.12);border-radius:16px;padding:28px}
+.example-label{display:inline-flex;align-items:center;gap:7px;background:rgba(239,168,187,0.18);border:1px solid rgba(239,168,187,0.25);color:var(--pink-deep);font-size:0.72rem;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;padding:5px 12px;border-radius:100px;margin-bottom:16px}
+.example-text{font-size:0.88rem;color:rgba(255,255,255,0.75);line-height:1.65;font-style:italic;font-family:var(--ff-head)}
+.whom-section{padding:96px 24px;background:#fff}
+.whom-inner{max-width:1100px;margin:0 auto}
+.whom-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:16px;margin-top:56px}
+.whom-card{background:linear-gradient(145deg,var(--pink-blush),#fff5fa);border:1.5px solid rgba(239,168,187,0.35);border-radius:18px;padding:28px 20px;text-align:center}
+.whom-emoji{font-size:2rem;margin-bottom:12px;display:block}
+.whom-title{font-family:var(--ff-head);font-size:0.95rem;font-weight:700;color:var(--green);margin-bottom:6px}
+.whom-body{font-size:0.78rem;color:var(--mid);line-height:1.5}
+.seo-section{padding:96px 24px;background:var(--cream);border-top:1px solid rgba(239,168,187,0.3)}
+.seo-inner{max-width:820px;margin:0 auto}
+.seo-inner h2{font-family:var(--ff-head);font-size:clamp(1.5rem,3vw,2rem);font-weight:700;color:var(--green);margin:0 0 16px;line-height:1.2}
+.seo-inner h3{font-family:var(--ff-head);font-size:1.15rem;font-weight:600;color:var(--green);margin:36px 0 12px}
+.seo-inner p{font-size:0.95rem;color:var(--mid);line-height:1.8;margin-bottom:16px}
+.seo-inner ul{margin:0 0 16px 20px}
+.seo-inner li{font-size:0.93rem;color:var(--mid);line-height:1.7;margin-bottom:6px}
+.faq-section{padding:96px 24px;background:#fff}
+.faq-inner{max-width:720px;margin:0 auto}
+.faq-list{margin-top:48px}
+.faq-item{border-bottom:1px solid rgba(239,168,187,0.4)}
+.faq-item:first-child{border-top:1px solid rgba(239,168,187,0.4)}
+.faq-item summary{padding:22px 4px;font-size:0.97rem;font-weight:600;color:var(--ink);cursor:pointer;list-style:none;display:flex;align-items:center;justify-content:space-between;gap:16px;line-height:1.4}
+.faq-item summary::-webkit-details-marker{display:none}
+.faq-item summary::after{content:'+';font-size:1.4rem;font-weight:300;color:var(--raspberry);min-width:20px;text-align:right;flex-shrink:0}
+.faq-item[open] summary::after{content:'−'}
+.faq-answer{padding:0 4px 22px;font-size:0.9rem;color:var(--mid);line-height:1.75}
+.cta-section{padding:96px 24px;text-align:center;background:radial-gradient(ellipse 80% 60% at 20% 30%,rgba(239,168,187,0.4) 0%,transparent 55%),radial-gradient(ellipse 70% 70% at 80% 60%,rgba(222,174,208,0.35) 0%,transparent 55%),#fff8f4}
+.cta-section h2{font-family:var(--ff-head);font-size:clamp(2rem,5vw,3.2rem);font-weight:700;color:var(--green);line-height:1.1;max-width:640px;margin:0 auto 20px}
+.cta-section h2 em{color:var(--raspberry);font-style:italic}
+.cta-section p{font-size:1.05rem;color:var(--mid);max-width:440px;margin:0 auto 40px;line-height:1.65}
+.footer{background:var(--green);padding:32px 24px}
+.footer-inner{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;max-width:900px;margin:0 auto;gap:16px}
+.footer-logo{font-family:var(--ff-head);font-size:1rem;font-weight:600;color:rgba(255,255,255,0.9);text-decoration:none}
+.footer-links{display:flex;gap:24px}
+.footer-links a{font-size:0.82rem;color:rgba(255,255,255,0.55);text-decoration:none}
+.footer-copy{font-size:0.78rem;color:rgba(255,255,255,0.35)}
+@keyframes fadeSlideUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+@keyframes scrollPulse{0%,100%{opacity:0.4}50%{opacity:1}}
+@media(max-width:900px){.how-grid{grid-template-columns:1fr}}
+@media(max-width:640px){.nav{padding:14px 20px}.hero{padding:100px 20px 72px}.tool-body{padding:24px}.tool-footer{padding:16px 24px 24px}.tool-steps{padding:16px 24px;flex-wrap:wrap;gap:8px}.industry-grid{grid-template-columns:1fr}.how-grid{grid-template-columns:1fr}.examples-grid{grid-template-columns:1fr}.whom-grid{grid-template-columns:1fr 1fr}.footer-inner{flex-direction:column;text-align:center}.footer-links{justify-content:center}.proof-inner{gap:20px}.hero-cta-wrap{flex-direction:column;align-items:center}.btn-hero,.btn-hero-secondary{width:100%;max-width:320px;justify-content:center}.action-row{flex-direction:column;gap:10px}.email-row{flex-direction:column}}
 </style>
 </head>
 <body>
 
-<!-- NAV -->
-<nav class="nav" role="navigation" aria-label="Main navigation">
-  <a href="https://bloomingcheckout.com" class="nav-logo" aria-label="Blooming Checkout home">
-    Blooming <span>Checkout</span>
-  </a>
-  <a href="https://bloomingcheckout.com/collections/digital-marketing-plans" class="nav-cta">
-    View SEO Plans →
-  </a>
+<nav class="nav">
+  <a href="https://bloomingcheckout.com" class="nav-logo">Blooming <span>Checkout</span></a>
+  <a href="https://bloomingcheckout.com/collections/digital-marketing-plans" class="nav-cta">View SEO Plans →</a>
 </nav>
 
-<!-- HERO -->
-<section class="hero" aria-labelledby="hero-heading">
+<section class="hero">
   <div class="hero-grain" aria-hidden="true"></div>
-
   <span class="hero-eyebrow">🌸 Free AI Tool for Small Business</span>
-
-  <h1 id="hero-heading">
-    Your business deserves<br>
-    <em>better AI prompts</em>
-  </h1>
-
-  <p class="hero-sub">
-    Build a custom mega-prompt for your exact business in seconds. Pick your industry. Choose your task. Get a structured prompt you can copy straight into Claude, ChatGPT, or any AI tool.
-  </p>
-
+  <h1>Your business deserves<br><em>better AI prompts</em></h1>
+  <p class="hero-sub">Build a custom mega-prompt for your exact business in seconds. Pick your industry. Choose your task. Get a structured prompt you can copy straight into Claude, ChatGPT, or any AI tool.</p>
   <div class="hero-pills">
     <span class="pill">✦ Free to use</span>
     <span class="pill">⚡ Powered by Claude</span>
     <span class="pill">🌸 Built for small business</span>
     <span class="pill">🔒 No account needed</span>
   </div>
-
   <div class="hero-cta-wrap">
-    <a href="#tool" class="btn-hero">
-      <span>Generate My Prompt</span>
-      <span class="btn-generate-spark">✦</span>
-    </a>
-    <a href="https://bloomingcheckout.com/collections/digital-marketing-plans" class="btn-hero-secondary">
-      Explore SEO Plans
-    </a>
+    <a href="#tool" class="btn-hero">Generate My Prompt ✦</a>
+    <a href="https://bloomingcheckout.com/collections/digital-marketing-plans" class="btn-hero-secondary">Explore SEO Plans</a>
   </div>
-
   <div class="scroll-hint" aria-hidden="true">
-    <span>Try it now</span>
     <div class="scroll-line"></div>
   </div>
 </section>
 
-<!-- PROOF BAR -->
-<div class="proof-bar" role="region" aria-label="Quick stats">
+<div class="proof-bar">
   <div class="proof-inner">
-    <div class="proof-item">
-      <span class="proof-num">6</span>
-      <span>industries supported</span>
-    </div>
-    <div class="proof-item">
-      <span class="proof-num">50+</span>
-      <span>prompt types</span>
-    </div>
-    <div class="proof-item">
-      <span class="proof-num">10s</span>
-      <span>to generate</span>
-    </div>
-    <div class="proof-item">
-      <span class="proof-num">100%</span>
-      <span>free, forever</span>
-    </div>
+    <div class="proof-item"><span class="proof-num">6</span><span>industries supported</span></div>
+    <div class="proof-item"><span class="proof-num">50+</span><span>prompt types</span></div>
+    <div class="proof-item"><span class="proof-num">~10sec</span><span>to generate</span></div>
+    <div class="proof-item"><span class="proof-num">100%</span><span>free, forever</span></div>
   </div>
 </div>
 
-<!-- TOOL SECTION -->
-<section id="tool" class="tool-section" aria-labelledby="tool-heading">
+<section id="tool" class="tool-section">
   <div class="tool-header">
     <span class="section-eyebrow">✦ The Generator</span>
-    <h2 class="section-title" id="tool-heading">
-      Your mega-prompt,<br><em>built in seconds</em>
-    </h2>
-    <p class="section-body">
-      Tell us about your business and what you need help with. We'll build a structured, professional AI prompt around your exact context — so you get real results instead of generic answers.
-    </p>
+    <h2 class="section-title">Your mega-prompt,<br><em>built in seconds</em></h2>
+    <p class="section-body">Tell us about your business and what you need help with. We'll build a structured prompt around your exact context — so you get real results instead of generic answers.</p>
   </div>
-
-  <div class="tool-card" role="region" aria-label="AI Prompt Generator">
-
+  <div class="tool-card">
     <div class="tool-card-header">
       <span class="tool-card-title">AI Prompt Generator ✦</span>
       <span class="tool-card-badge">Free Tool</span>
     </div>
-
-    <div class="tool-steps" role="tablist" aria-label="Generator steps">
-      <div class="tool-step-item active" role="tab" aria-selected="true">
-        <span class="tool-step-num">1</span>
-        Your business type
-      </div>
-      <div class="tool-step-divider" aria-hidden="true"></div>
-      <div class="tool-step-item" role="tab" aria-selected="false">
-        <span class="tool-step-num">2</span>
-        Your task
-      </div>
-      <div class="tool-step-divider" aria-hidden="true"></div>
-      <div class="tool-step-item" role="tab" aria-selected="false">
-        <span class="tool-step-num">3</span>
-        Your prompt
-      </div>
+    <div class="tool-steps">
+      <div class="tool-step-item active"><span class="tool-step-num">1</span>Your business type</div>
+      <div class="tool-step-divider"></div>
+      <div class="tool-step-item"><span class="tool-step-num">2</span>Your task</div>
+      <div class="tool-step-divider"></div>
+      <div class="tool-step-item"><span class="tool-step-num">3</span>Your prompt</div>
     </div>
-
     <div class="tool-body">
-      <!-- STEP 1: BUSINESS TYPE -->
       <div id="step-business">
         <p>What kind of business are you?</p>
-        <div class="industry-grid" role="group" aria-label="Select your industry">
-          <button class="industry-btn" type="button" onclick="selectBusiness('florist','Florist / Flower Shop')" aria-label="Florist or Flower Shop">
-            <span class="industry-emoji" aria-hidden="true">🌸</span>
-            Florist / Flower Shop
-          </button>
-          <button class="industry-btn" type="button" onclick="selectBusiness('shopify','Shopify Store Owner')" aria-label="Shopify Store Owner">
-            <span class="industry-emoji" aria-hidden="true">🛍️</span>
-            Shopify Store Owner
-          </button>
-          <button class="industry-btn" type="button" onclick="selectBusiness('fashion','Fashion Boutique')" aria-label="Fashion Boutique">
-            <span class="industry-emoji" aria-hidden="true">👗</span>
-            Fashion Boutique
-          </button>
-          <button class="industry-btn" type="button" onclick="selectBusiness('wellness','Wellness Business')" aria-label="Wellness Business">
-            <span class="industry-emoji" aria-hidden="true">🧘</span>
-            Wellness Business
-          </button>
-          <button class="industry-btn" type="button" onclick="selectBusiness('agency','Marketing Agency')" aria-label="Marketing Agency">
-            <span class="industry-emoji" aria-hidden="true">📈</span>
-            Marketing Agency
-          </button>
-          <button class="industry-btn" type="button" onclick="selectBusiness('lifestyle','Lifestyle Brand')" aria-label="Lifestyle Brand">
-            <span class="industry-emoji" aria-hidden="true">✨</span>
-            Lifestyle Brand
-          </button>
+        <div class="industry-grid">
+          <button class="industry-btn" onclick="selectBusiness('florist','Florist / Flower Shop')"><span class="industry-emoji">🌸</span>Florist / Flower Shop</button>
+          <button class="industry-btn" onclick="selectBusiness('shopify','Shopify Store Owner')"><span class="industry-emoji">🛍️</span>Shopify Store Owner</button>
+          <button class="industry-btn" onclick="selectBusiness('fashion','Fashion Boutique')"><span class="industry-emoji">👗</span>Fashion Boutique</button>
+          <button class="industry-btn" onclick="selectBusiness('wellness','Wellness Business')"><span class="industry-emoji">🧘</span>Wellness Business</button>
+          <button class="industry-btn" onclick="selectBusiness('agency','Marketing Agency')"><span class="industry-emoji">📈</span>Marketing Agency</button>
+          <button class="industry-btn" onclick="selectBusiness('lifestyle','Lifestyle Brand')"><span class="industry-emoji">✨</span>Lifestyle Brand</button>
         </div>
       </div>
-
-      <!-- STEP 2: TASK -->
-      <div id="step-task" style="display:none;">
+      <div id="step-task" style="display:none">
         <button class="back-btn-tool" onclick="goBack()">← Back</button>
-        <p style="font-weight:600;">What do you need a prompt for?</p>
-        <p style="font-size:0.82rem;color:var(--mid);margin-bottom:20px;">Pick a common task below, or describe your own.</p>
+        <p style="font-weight:600">What do you need a prompt for?</p>
+        <p style="font-size:0.82rem;color:var(--mid);margin-bottom:20px">Pick a task below, or describe your own.</p>
         <div class="task-list" id="task-list"></div>
         <div class="divider-tool"></div>
         <label class="tool-custom-label">Or describe your own task</label>
         <textarea id="custom-task" rows="3" placeholder="e.g. Write a Valentine's Day email campaign for my flower shop..." oninput="onCustomInput()"></textarea>
         <button class="btn-generate" id="generate-btn" onclick="generate()" disabled>Generate My Mega-Prompt ✦</button>
       </div>
-
-      <!-- STEP 3: GENERATING -->
-      <div id="step-generating" style="display:none;">
+      <div id="step-generating" style="display:none">
         <div class="loader-wrap">
           <div class="spinner-ring"></div>
-          <div style="text-align:center;">
-            <p>Building your mega-prompt...</p>
-            <small>Usually about 10 seconds</small>
-          </div>
+          <div style="text-align:center"><p>Building your mega-prompt...</p><small>Usually about 10 seconds</small></div>
         </div>
       </div>
-
-      <!-- STEP 4: RESULT -->
-      <div id="step-result" style="display:none;">
+      <div id="step-result" style="display:none">
         <div class="result-tag">Your Mega-Prompt ✦</div>
         <div class="result-task" id="result-task-name"></div>
         <div class="prompt-box" id="prompt-output"></div>
@@ -1611,223 +265,126 @@ textarea::placeholder {
           <button class="btn-secondary-tool" onclick="reset()">New Prompt</button>
         </div>
         <div class="upsell">
-          <p><strong>Want 50+ more like this?</strong><br>Get the Shopify SEO Prompt System — 50 done-for-you mega-prompts with a Notion workspace and lifetime updates.</p>
-          <a href="https://bloomingcheckout.com/collections/digital-marketing-plans" target="_blank">Get the Full Pack — $47 →</a>
+          <p><strong>Want more from your SEO?</strong><br>Explore our done-for-you SEO plans — monthly link-building campaigns, authority packages, and digital tools built specifically for Shopify stores and lifestyle brands.</p>
+          <a href="https://bloomingcheckout.com/collections/digital-marketing-plans" target="_blank">Explore SEO Plans →</a>
         </div>
       </div>
-
-      <!-- STEP 5: EMAIL GATE -->
-      <div id="step-gate" style="display:none;">
+      <div id="step-gate" style="display:none">
         <div class="gate-wrap">
           <div class="gate-icon-wrap">🌸</div>
           <h2>Get unlimited prompts</h2>
           <p>You've used your 2 free generations. Drop your email and get <strong>10 free mega-prompts</strong> delivered instantly, plus unlimited generator access.</p>
           <div class="email-row">
-            <input type="email" id="email-input" placeholder="your@email.com" />
+            <input type="email" id="email-input" placeholder="your@email.com"/>
             <button class="btn-unlock" onclick="submitEmail()">Continue →</button>
           </div>
           <div class="privacy-note">No spam. Just good prompts. Unsubscribe any time.</div>
         </div>
       </div>
-
-      <!-- STEP 6: SUCCESS -->
-      <div id="step-success" style="display:none;">
+      <div id="step-success" style="display:none">
         <div class="success-wrap">
           <div class="success-icon-wrap">✉️</div>
           <h2>On its way to you!</h2>
           <p>Your 10 free mega-prompts are heading to your inbox. Keep generating. You're in.</p>
-          <button class="btn-generate" style="margin-top:24px;" onclick="reset()">Keep Generating ✦</button>
+          <button class="btn-generate" style="margin-top:24px" onclick="reset()">Keep Generating ✦</button>
         </div>
       </div>
     </div>
-
   </div>
 </section>
 
-<!-- HOW IT WORKS -->
-<section class="how-section" aria-labelledby="how-heading">
+<section class="how-section">
   <div class="how-inner">
-    <div style="text-align:center; max-width:580px; margin:0 auto;">
+    <div style="text-align:center;max-width:580px;margin:0 auto">
       <span class="section-eyebrow">Simple Process</span>
-      <h2 class="section-title" id="how-heading">Three steps to a <em>prompt that works</em></h2>
-      <p class="section-body">No prompt engineering experience needed. No jargon. Just pick your situation and get a professional result.</p>
+      <h2 class="section-title">Three steps to a <em>prompt that works</em></h2>
+      <p class="section-body">No prompt engineering experience needed. Just pick your situation and get a professional result.</p>
     </div>
     <div class="how-grid">
-      <div class="how-card">
-        <div class="how-num">01</div>
-        <h3 class="how-title">Pick your business type</h3>
-        <p class="how-body">Choose the category that best describes you — from florists and Shopify stores to fashion boutiques and wellness brands. This tells the generator your context.</p>
-      </div>
-      <div class="how-card">
-        <div class="how-num">02</div>
-        <h3 class="how-title">Choose your task</h3>
-        <p class="how-body">Select from common tasks like writing product descriptions, creating social captions, responding to reviews, or describe your own custom task in plain English.</p>
-      </div>
-      <div class="how-card">
-        <div class="how-num">03</div>
-        <h3 class="how-title">Copy and use instantly</h3>
-        <p class="how-body">Your mega-prompt is generated in about 10 seconds. Copy it directly into Claude, ChatGPT, or any AI tool — and get a real, contextual answer instead of something generic.</p>
-      </div>
+      <div class="how-card"><div class="how-num">01</div><h3 class="how-title">Pick your business type</h3><p class="how-body">Choose the category that best describes you — from florists and Shopify stores to fashion boutiques and wellness brands.</p></div>
+      <div class="how-card"><div class="how-num">02</div><h3 class="how-title">Choose your task</h3><p class="how-body">Select from common tasks like writing product descriptions, social captions, or describe your own task in plain English.</p></div>
+      <div class="how-card"><div class="how-num">03</div><h3 class="how-title">Copy and use instantly</h3><p class="how-body">Your mega-prompt is ready in about 10 seconds. Copy it into Claude, ChatGPT, or any AI tool and get a real, contextual answer.</p></div>
     </div>
   </div>
 </section>
 
-<!-- PROMPT EXAMPLES -->
-<section class="examples-section" aria-labelledby="examples-heading">
+<section class="examples-section">
   <div class="examples-inner">
     <span class="examples-eyebrow">What you'll get</span>
-    <h2 class="examples-title" id="examples-heading">
-      Prompts that sound like <em>you wrote them</em>
-    </h2>
+    <h2 class="examples-title">Prompts that sound like <em>you wrote them</em></h2>
     <div class="examples-grid">
-      <div class="example-card">
-        <span class="example-label">🌸 Florist</span>
-        <p class="example-text">"You are a senior copywriter for a luxury flower delivery brand. Write a product description for a seasonal peony arrangement targeting gift buyers in Cape Town aged 28–45. Use an emotional, sensory tone. Include delivery reassurance and a clear call to action..."</p>
-      </div>
-      <div class="example-card">
-        <span class="example-label">🛍️ Shopify Store</span>
-        <p class="example-text">"You are an SEO-specialised Shopify copywriter. Write a collection page for a women's linen clothing brand targeting the keyword 'linen dresses South Africa'. Include an intro (under 500 characters), body copy (600 words), and a 5-question FAQ..."</p>
-      </div>
-      <div class="example-card">
-        <span class="example-label">👗 Fashion Boutique</span>
-        <p class="example-text">"You are a social media strategist for a luxury women's fashion boutique. Write 5 Instagram caption options for a new-season arrival post. Tone: elevated but warm. Include 1 question variant, 1 story-led variant, and 1 product-focused variant..."</p>
-      </div>
+      <div class="example-card"><span class="example-label">🌸 Florist</span><p class="example-text">"You are a senior copywriter for a luxury flower delivery brand. Write a product description for a seasonal peony arrangement targeting gift buyers in Cape Town aged 28–45. Use an emotional, sensory tone..."</p></div>
+      <div class="example-card"><span class="example-label">🛍️ Shopify Store</span><p class="example-text">"You are an SEO-specialised Shopify copywriter. Write a collection page for a women's linen clothing brand targeting 'linen dresses South Africa'. Include an intro under 500 characters, body copy, and a 5-question FAQ..."</p></div>
+      <div class="example-card"><span class="example-label">👗 Fashion Boutique</span><p class="example-text">"You are a social media strategist for a luxury women's fashion boutique. Write 5 Instagram caption options for a new-season arrival. Include 1 question variant, 1 story-led, and 1 product-focused variant..."</p></div>
     </div>
   </div>
 </section>
 
-<!-- FOR WHOM -->
-<section class="whom-section" aria-labelledby="whom-heading">
+<section class="whom-section">
   <div class="whom-inner">
-    <div style="text-align:center; max-width:540px; margin:0 auto;">
+    <div style="text-align:center;max-width:540px;margin:0 auto">
       <span class="section-eyebrow">Who it's for</span>
-      <h2 class="section-title" id="whom-heading">Built for <em>independent brands</em></h2>
-      <p class="section-body">If you run a small or growing business and you're using AI tools without getting the results you hoped for — this is for you.</p>
+      <h2 class="section-title">Built for <em>independent brands</em></h2>
+      <p class="section-body">If you run a small or growing business and AI tools aren't giving you the results you hoped for — this is for you.</p>
     </div>
     <div class="whom-grid">
-      <div class="whom-card">
-        <span class="whom-emoji">🌸</span>
-        <div class="whom-title">Florists</div>
-        <p class="whom-body">Product copy, seasonal campaigns, local SEO content</p>
-      </div>
-      <div class="whom-card">
-        <span class="whom-emoji">🛍️</span>
-        <div class="whom-title">Shopify Owners</div>
-        <p class="whom-body">Collection pages, product descriptions, email copy</p>
-      </div>
-      <div class="whom-card">
-        <span class="whom-emoji">👗</span>
-        <div class="whom-title">Fashion Boutiques</div>
-        <p class="whom-body">Social content, product stories, style guides</p>
-      </div>
-      <div class="whom-card">
-        <span class="whom-emoji">🧘</span>
-        <div class="whom-title">Wellness Brands</div>
-        <p class="whom-body">Educational content, brand voice, email nurture</p>
-      </div>
-      <div class="whom-card">
-        <span class="whom-emoji">📈</span>
-        <div class="whom-title">Marketing Agencies</div>
-        <p class="whom-body">Client briefs, strategy prompts, reporting copy</p>
-      </div>
-      <div class="whom-card">
-        <span class="whom-emoji">✨</span>
-        <div class="whom-title">Lifestyle Brands</div>
-        <p class="whom-body">Brand storytelling, social captions, launch copy</p>
-      </div>
+      <div class="whom-card"><span class="whom-emoji">🌸</span><div class="whom-title">Florists</div><p class="whom-body">Product copy, seasonal campaigns, local SEO content</p></div>
+      <div class="whom-card"><span class="whom-emoji">🛍️</span><div class="whom-title">Shopify Owners</div><p class="whom-body">Collection pages, product descriptions, email copy</p></div>
+      <div class="whom-card"><span class="whom-emoji">👗</span><div class="whom-title">Fashion Boutiques</div><p class="whom-body">Social content, product stories, style guides</p></div>
+      <div class="whom-card"><span class="whom-emoji">🧘</span><div class="whom-title">Wellness Brands</div><p class="whom-body">Educational content, brand voice, email nurture</p></div>
+      <div class="whom-card"><span class="whom-emoji">📈</span><div class="whom-title">Marketing Agencies</div><p class="whom-body">Client briefs, strategy prompts, reporting copy</p></div>
+      <div class="whom-card"><span class="whom-emoji">✨</span><div class="whom-title">Lifestyle Brands</div><p class="whom-body">Brand storytelling, social captions, launch copy</p></div>
     </div>
   </div>
 </section>
 
-<!-- SEO CONTENT -->
-<section class="seo-section" aria-labelledby="seo-heading">
+<section class="seo-section">
   <div class="seo-inner">
-    <h2 id="seo-heading">What is an AI Mega-Prompt — and Why Does It Matter for Your Business?</h2>
-    <p>Most small business owners who use AI tools like ChatGPT or Claude hit the same wall: they type a basic request and get a basic answer. "Write me a product description for a pink dress" produces something generic, flat, and forgettable. The problem isn't the AI — it's the prompt.</p>
-    <p>A mega-prompt is a structured, detailed instruction set that gives the AI everything it needs to produce something genuinely useful. It specifies your business context, your target audience, your tone of voice, the format you need, and the specific outcome you're after. The difference in output quality is dramatic.</p>
-
+    <h2>What is an AI Mega-Prompt — and Why Does It Matter for Your Business?</h2>
+    <p>Most small business owners who use AI tools like ChatGPT or Claude hit the same wall: they type a basic request and get a basic answer. The problem isn't the AI — it's the prompt.</p>
+    <p>A mega-prompt is a structured, detailed instruction set that gives the AI everything it needs to produce something genuinely useful — your business context, target audience, tone of voice, format needed, and the specific outcome you're after.</p>
     <h3>Why generic AI prompts don't work for small businesses</h3>
-    <p>Generic prompts produce generic results because AI language models perform best when given rich context. When you tell Claude or ChatGPT that you're a florist in Cape Town targeting gift-buyers aged 28–45 who want luxury delivery, you get copy that could actually go live on your website. When you just say "write a product description," you get something that could belong to anyone.</p>
-    <p>This prompt generator closes that gap automatically. It builds your context into the prompt structure so you don't have to — which means better outputs every time, from the first try.</p>
-
-    <h3>What can you use AI prompts for in a small business?</h3>
+    <p>Generic prompts produce generic results. When you tell Claude or ChatGPT that you're a florist in Cape Town targeting gift-buyers aged 28–45, you get copy that could actually go live on your website. This generator builds that context automatically.</p>
+    <h3>What can you use AI prompts for?</h3>
     <ul>
-      <li>Writing product descriptions for Shopify stores and ecommerce sites</li>
+      <li>Writing product descriptions for Shopify stores</li>
       <li>Creating SEO-optimised collection page copy</li>
       <li>Drafting Instagram, Facebook, and TikTok captions</li>
       <li>Writing email marketing campaigns and welcome sequences</li>
       <li>Responding to customer reviews professionally</li>
       <li>Building content briefs for blog posts and landing pages</li>
-      <li>Generating customer persona research</li>
-      <li>Creating internal SOPs and team documentation</li>
     </ul>
-
     <h3>About this tool</h3>
-    <p>This free AI prompt generator was built by <a href="https://bloomingcheckout.com" style="color:var(--green);font-weight:600;">Blooming Checkout</a> — a boutique SEO and digital marketing agency for Shopify lifestyle brands. It's powered by Claude, Anthropic's AI model, and is completely free to use with no account required.</p>
-    <p>If you want to go deeper with AI-powered marketing for your brand, explore our <a href="https://bloomingcheckout.com/collections/digital-marketing-plans" style="color:var(--green);font-weight:600;">SEO plans and digital products</a> — built specifically for Shopify stores and independent brands.</p>
+    <p>Built by <a href="https://bloomingcheckout.com" style="color:var(--green);font-weight:600">Blooming Checkout</a> — a boutique SEO and digital marketing agency for Shopify lifestyle brands. Powered by Claude AI. Completely free, no account required.</p>
   </div>
 </section>
 
-<!-- FAQ -->
-<section class="faq-section" aria-labelledby="faq-heading">
+<section class="faq-section">
   <div class="faq-inner">
-    <div style="text-align:center;">
-      <span class="section-eyebrow">Questions</span>
-      <h2 class="section-title" id="faq-heading">Frequently asked</h2>
-    </div>
+    <div style="text-align:center"><span class="section-eyebrow">Questions</span><h2 class="section-title">Frequently asked</h2></div>
     <div class="faq-list">
-
-      <details class="faq-item">
-        <summary>Is this tool really free?</summary>
-        <div class="faq-answer">Yes, completely. There's no account required and no hidden costs. You get 2 free prompt generations per session. If you want unlimited access, just drop your email and we'll send you 10 free mega-prompts plus ongoing access.</div>
-      </details>
-
-      <details class="faq-item">
-        <summary>Which AI tools can I use the prompts with?</summary>
-        <div class="faq-answer">Any of them. The prompts are designed to work with Claude (Anthropic), ChatGPT (OpenAI), Gemini (Google), and any other large language model. Claude tends to produce the best results with detailed structured prompts, which is what this tool generates.</div>
-      </details>
-
-      <details class="faq-item">
-        <summary>What makes a mega-prompt different from a normal prompt?</summary>
-        <div class="faq-answer">A mega-prompt gives the AI a full brief rather than a one-line instruction. It includes your business context, your audience, the tone you want, the format you need, the specific task, and any constraints or requirements. This structured approach is why outputs from a mega-prompt are dramatically better than outputs from a simple request.</div>
-      </details>
-
-      <details class="faq-item">
-        <summary>I'm not technical — is this easy to use?</summary>
-        <div class="faq-answer">Very. You click your industry, pick a task, and your prompt is generated automatically. There's nothing to configure or set up. If you can copy and paste text, you can use this tool.</div>
-      </details>
-
-      <details class="faq-item">
-        <summary>Who built this?</summary>
-        <div class="faq-answer">This tool was built by Blooming Checkout, a boutique SEO and digital marketing agency for Shopify lifestyle brands based in Cape Town, South Africa. We work with independent stores, florists, fashion boutiques, and lifestyle brands to grow their organic traffic and marketing results.</div>
-      </details>
-
+      <details class="faq-item"><summary>Is this tool really free?</summary><div class="faq-answer">Yes, completely. No account required, no hidden costs. You get 2 free generations per session. Drop your email for unlimited access and 10 free mega-prompts delivered instantly.</div></details>
+      <details class="faq-item"><summary>Which AI tools can I use the prompts with?</summary><div class="faq-answer">Any of them — Claude, ChatGPT, Gemini, or any other large language model. Claude tends to produce the best results with detailed structured prompts like the ones this tool generates.</div></details>
+      <details class="faq-item"><summary>What makes a mega-prompt different from a normal prompt?</summary><div class="faq-answer">A mega-prompt gives the AI a full brief — your business context, audience, tone, format, task, and constraints. This structured approach produces dramatically better outputs than a one-line request.</div></details>
+      <details class="faq-item"><summary>I'm not technical — is this easy to use?</summary><div class="faq-answer">Very. Click your industry, pick a task, your prompt is generated automatically. If you can copy and paste text, you can use this tool.</div></details>
+      <details class="faq-item"><summary>Who built this?</summary><div class="faq-answer">Blooming Checkout — a boutique SEO and digital marketing agency for Shopify lifestyle brands based in Cape Town, South Africa.</div></details>
     </div>
   </div>
 </section>
 
-<!-- BOTTOM CTA -->
-<section class="cta-section" aria-labelledby="cta-heading">
-  <h2 id="cta-heading">
-    Ready to get <em>real results</em><br>from AI?
-  </h2>
+<section class="cta-section">
+  <h2>Ready to get <em>real results</em><br>from AI?</h2>
   <p>Generate your first mega-prompt in under 30 seconds. Free, no account needed.</p>
   <div class="hero-cta-wrap">
-    <a href="#tool" class="btn-hero">
-      <span>Generate My Prompt</span>
-      <span aria-hidden="true">✦</span>
-    </a>
-    <a href="https://bloomingcheckout.com/collections/digital-marketing-plans" class="btn-hero-secondary">
-      Explore SEO Plans
-    </a>
+    <a href="#tool" class="btn-hero">Generate My Prompt ✦</a>
+    <a href="https://bloomingcheckout.com/collections/digital-marketing-plans" class="btn-hero-secondary">Explore SEO Plans</a>
   </div>
 </section>
 
-<!-- FOOTER -->
-<footer class="footer" role="contentinfo">
+<footer class="footer">
   <div class="footer-inner">
     <a href="https://bloomingcheckout.com" class="footer-logo">Blooming Checkout</a>
-    <nav class="footer-links" aria-label="Footer navigation">
+    <nav class="footer-links">
       <a href="https://bloomingcheckout.com/collections/digital-marketing-plans">SEO Plans</a>
       <a href="https://bloomingcheckout.com/blogs/resources">Blog</a>
       <a href="https://bloomingcheckout.com">Agency</a>
@@ -1837,291 +394,23 @@ textarea::placeholder {
 </footer>
 
 <script>
-// ── TASK LISTS ────────────────────────────────────────────────────────────
-const TASKS = {
-  florist: [
-    "Write bouquet and product descriptions",
-    "Create a seasonal campaign (Mother's Day, Valentine's, etc.)",
-    "Write SEO collection page copy",
-    "Build an email marketing sequence",
-    "Generate social media captions",
-    "Write Google Ads copy",
-    "Create a customer win-back campaign",
-    "Write FAQ content for my website",
-  ],
-  shopify: [
-    "Write SEO collection page copy",
-    "Write product descriptions that convert",
-    "Create a Google Ads campaign",
-    "Build an email welcome sequence",
-    "Write meta titles and descriptions",
-    "Generate a social media content calendar",
-    "Write a homepage hero section",
-    "Write a blog post for SEO",
-  ],
-  fashion: [
-    "Write product descriptions for clothing and accessories",
-    "Create a new season launch campaign",
-    "Write Instagram and TikTok captions",
-    "Build an email sequence for new arrivals",
-    "Write SEO collection page copy",
-    "Create a lookbook narrative",
-    "Write a styling guide for customers",
-    "Generate Google Shopping ad copy",
-  ],
-  wellness: [
-    "Write service and treatment descriptions",
-    "Create a wellness package launch campaign",
-    "Write Instagram content for a wellness brand",
-    "Build a client nurture email sequence",
-    "Write a blog post for SEO",
-    "Create a referral programme campaign",
-    "Write Google Ads for a local wellness studio",
-    "Generate FAQ content for my website",
-  ],
-  agency: [
-    "Write a client SEO proposal",
-    "Create a client audit summary",
-    "Write cold outreach emails",
-    "Build a content strategy brief",
-    "Write a competitor analysis",
-    "Write case study copy",
-    "Create client onboarding materials",
-    "Write a monthly performance report",
-  ],
-  lifestyle: [
-    "Write brand voice guidelines",
-    "Create Instagram content pillars",
-    "Write a product launch email sequence",
-    "Build product storytelling copy",
-    "Create a lead magnet concept",
-    "Write website homepage copy",
-    "Write influencer outreach emails",
-    "Build a loyalty campaign",
-  ],
-};
-
-// ── SYSTEM PROMPT ─────────────────────────────────────────────────────────
-const SYSTEM = `You are an expert prompt engineer who creates mega-prompts -- detailed, role-based AI instructions that produce professional business outputs in a single use.
-
-Structure every mega-prompt exactly like this:
-
-#CONTEXT:
-[Assign a specific expert AI role relevant to the task]
-
-#GOAL:
-[The precise outcome the user wants to achieve]
-
-#TASK REQUIREMENTS:
-[4-6 specific, measurable criteria the output must meet]
-
-#OUTPUT FORMAT:
-[Exact format, structure, length, and delivery]
-
-#TONE AND VOICE:
-[Specific tone, brand personality, and audience]
-
-#VARIABLES TO CUSTOMISE:
-[List every [BRACKETED_VARIABLE] the user must fill in before using]
-
-Make the prompt detailed, specific, and immediately usable. At least 280 words. So precise that it produces professional-grade output on the first attempt.
-Return ONLY the mega-prompt. No preamble, no explanation, no markdown fences.`;
-
-// ── STATE ──────────────────────────────────────────────────────────────────
-let state = {
-  business: 'shopify',
-  businessLabel: 'Shopify Store Owner',
-  selectedTask: null,
-  customTask: '',
-  promptsGenerated: 0,
-  unlocked: false,
-  generatedPrompt: '',
-};
-
-// ── UI HELPERS ─────────────────────────────────────────────────────────────
-function show(id) {
-  ['step-business','step-task','step-generating','step-result','step-gate','step-success']
-    .forEach(s => document.getElementById(s).style.display = 'none');
-  document.getElementById(id).style.display = 'block';
-  updateSteps(id);
-}
-
-function updateSteps(stepId) {
-  const steps = document.querySelectorAll('.tool-step-item');
-  steps.forEach(s => s.classList.remove('active'));
-  if (stepId === 'step-business') {
-    steps[0].classList.add('active');
-  } else if (stepId === 'step-task') {
-    steps[1].classList.add('active');
-  } else if (['step-generating', 'step-result', 'step-gate', 'step-success'].includes(stepId)) {
-    steps[2].classList.add('active');
-  }
-}
-
-function selectBusiness(id, label) {
-  state.business = id;
-  state.businessLabel = label;
-  state.selectedTask = null;
-  state.customTask = '';
-
-  // Mark selected button
-  document.querySelectorAll('.industry-btn').forEach(btn => btn.classList.remove('selected'));
-  event.target.closest('.industry-btn').classList.add('selected');
-
-  renderTasks();
-  show('step-task');
-  updateBtn();
-}
-
-function renderTasks() {
-  const list = document.getElementById('task-list');
-  list.innerHTML = '';
-  TASKS[state.business].forEach(t => {
-    const btn = document.createElement('button');
-    btn.className = 'task-btn' + (state.selectedTask === t ? ' selected' : '');
-    btn.textContent = (state.selectedTask === t ? '✓ ' : '') + t;
-    btn.onclick = () => selectTask(t);
-    list.appendChild(btn);
-  });
-}
-
-function selectTask(t) {
-  state.selectedTask = t;
-  state.customTask = '';
-  document.getElementById('custom-task').value = '';
-  renderTasks();
-  updateBtn();
-}
-
-function onCustomInput() {
-  state.customTask = document.getElementById('custom-task').value;
-  if (state.customTask.trim()) { state.selectedTask = null; renderTasks(); }
-  updateBtn();
-}
-
-function updateBtn() {
-  document.getElementById('generate-btn').disabled = !(state.selectedTask || state.customTask.trim());
-}
-
-function goBack() { show('step-business'); }
-
-// ── GENERATE ───────────────────────────────────────────────────────────────
-async function generate() {
-  if (!state.unlocked && state.promptsGenerated >= 2) { show('step-gate'); return; }
-  const task = state.selectedTask || state.customTask.trim();
-  if (!task) return;
-  show('step-generating');
-  try {
-    const res = await fetch('/api/generate', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        model: 'claude-sonnet-4-20250514',
-        max_tokens: 1000,
-        system: SYSTEM,
-        messages: [{ role: 'user', content: `Create a detailed mega-prompt for a ${state.businessLabel} who needs to: "${task}". Make it highly specific to this business type with realistic customisable variables.` }],
-      }),
-    });
-    const data = await res.json();
-    const text = data.content?.find(b => b.type === 'text')?.text || 'Something went wrong. Please try again.';
-    state.generatedPrompt = text;
-    state.promptsGenerated += 1;
-    document.getElementById('result-task-name').textContent = task;
-    document.getElementById('prompt-output').textContent = text;
-    document.getElementById('copy-btn').textContent = 'Copy Prompt';
-    document.getElementById('copy-btn').classList.remove('copied');
-    show('step-result');
-  } catch (e) {
-    state.generatedPrompt = 'Something went wrong. Please refresh and try again.';
-    document.getElementById('result-task-name').textContent = task;
-    document.getElementById('prompt-output').textContent = state.generatedPrompt;
-    show('step-result');
-  }
-}
-
-// ── COPY ────────────────────────────────────────────────────────────────────
-function copyPrompt() {
-  navigator.clipboard.writeText(state.generatedPrompt).catch(() => {
-    const ta = document.createElement('textarea');
-    ta.value = state.generatedPrompt;
-    document.body.appendChild(ta);
-    ta.select();
-    document.execCommand('copy');
-    document.body.removeChild(ta);
-  });
-  const btn = document.getElementById('copy-btn');
-  btn.textContent = '✓ Copied!';
-  btn.classList.add('copied');
-  setTimeout(() => { btn.textContent = 'Copy Prompt'; btn.classList.remove('copied'); }, 2200);
-}
-
-// ── KIT (ConvertKit) CONFIG ──────────────────────────────────────────────
-const KIT_FORM_ID  = 'YOUR_KIT_FORM_ID';
-const KIT_API_KEY  = 'YOUR_KIT_API_KEY';
-
-async function submitEmail() {
-  const emailInput = document.getElementById('email-input');
-  const unlockBtn  = document.querySelector('.btn-unlock');
-  const email = emailInput.value.trim();
-  if (!email.includes('@') || !email.includes('.')) {
-    emailInput.style.borderColor = 'var(--raspberry)';
-    emailInput.placeholder = 'Please enter a valid email';
-    return;
-  }
-  unlockBtn.textContent = '...';
-  unlockBtn.disabled = true;
-  emailInput.disabled = true;
-  const tags = ['bc-prompt-generator', 'bc-lead'];
-  if (state.business) tags.push('biz-' + state.business);
-  try {
-    const res = await fetch(
-      `https://api.convertkit.com/v3/forms/${KIT_FORM_ID}/subscribe`,
-      {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          api_key: KIT_API_KEY,
-          email: email,
-          tags: tags,
-          fields: {
-            business_type: state.businessLabel || '',
-            source: 'BC Prompt Generator',
-          },
-        }),
-      }
-    );
-    const data = await res.json();
-    if (data.subscription || data.subscriber) {
-      state.unlocked = true;
-      state.promptsGenerated = 0;
-      show('step-success');
-    } else {
-      throw new Error(data.message || 'Subscription failed');
-    }
-  } catch (err) {
-    console.warn('Kit subscribe error:', err.message);
-    state.unlocked = true;
-    state.promptsGenerated = 0;
-    show('step-success');
-  } finally {
-    unlockBtn.textContent = 'Continue →';
-    unlockBtn.disabled = false;
-    emailInput.disabled = false;
-  }
-}
-
-function reset() {
-  state.selectedTask = null;
-  state.customTask = '';
-  document.getElementById('custom-task').value = '';
-  document.querySelectorAll('.industry-btn').forEach(btn => btn.classList.remove('selected'));
-  document.querySelectorAll('.industry-btn')[1].classList.add('selected');
-  show('step-business');
-}
-
-// Initialize
+const TASKS={florist:["Write bouquet and product descriptions","Create a seasonal campaign (Mother's Day, Valentine's, etc.)","Write SEO collection page copy","Build an email marketing sequence","Generate social media captions","Write Google Ads copy","Create a customer win-back campaign","Write FAQ content for my website"],shopify:["Write SEO collection page copy","Write product descriptions that convert","Create a Google Ads campaign","Build an email welcome sequence","Write meta titles and descriptions","Generate a social media content calendar","Write a homepage hero section","Write a blog post for SEO"],fashion:["Write product descriptions for clothing and accessories","Create a new season launch campaign","Write Instagram and TikTok captions","Build an email sequence for new arrivals","Write SEO collection page copy","Create a lookbook narrative","Write a styling guide for customers","Generate Google Shopping ad copy"],wellness:["Write service and treatment descriptions","Create a wellness package launch campaign","Write Instagram content for a wellness brand","Build a client nurture email sequence","Write a blog post for SEO","Create a referral programme campaign","Write Google Ads for a local wellness studio","Generate FAQ content for my website"],agency:["Write a client SEO proposal","Create a client audit summary","Write cold outreach emails","Build a content strategy brief","Write a competitor analysis","Write case study copy","Create client onboarding materials","Write a monthly performance report"],lifestyle:["Write brand voice guidelines","Create Instagram content pillars","Write a product launch email sequence","Build product storytelling copy","Create a lead magnet concept","Write website homepage copy","Write influencer outreach emails","Build a loyalty campaign"]};
+const SYSTEM=`You are an expert prompt engineer who creates mega-prompts -- detailed, role-based AI instructions that produce professional business outputs in a single use.\n\nStructure every mega-prompt exactly like this:\n\n#CONTEXT:\n[Assign a specific expert AI role relevant to the task]\n\n#GOAL:\n[The precise outcome the user wants to achieve]\n\n#TASK REQUIREMENTS:\n[4-6 specific, measurable criteria the output must meet]\n\n#OUTPUT FORMAT:\n[Exact format, structure, length, and delivery]\n\n#TONE AND VOICE:\n[Specific tone, brand personality, and audience]\n\n#VARIABLES TO CUSTOMISE:\n[List every [BRACKETED_VARIABLE] the user must fill in before using]\n\nMake the prompt detailed, specific, and immediately usable. At least 280 words. Return ONLY the mega-prompt. No preamble, no explanation, no markdown fences.`;
+let state={business:'shopify',businessLabel:'Shopify Store Owner',selectedTask:null,customTask:'',promptsGenerated:0,unlocked:false,generatedPrompt:''};
+function show(id){['step-business','step-task','step-generating','step-result','step-gate','step-success'].forEach(s=>document.getElementById(s).style.display='none');document.getElementById(id).style.display='block';updateSteps(id)}
+function updateSteps(id){const s=document.querySelectorAll('.tool-step-item');s.forEach(x=>x.classList.remove('active'));if(id==='step-business')s[0].classList.add('active');else if(id==='step-task')s[1].classList.add('active');else s[2].classList.add('active')}
+function selectBusiness(id,label){state.business=id;state.businessLabel=label;state.selectedTask=null;state.customTask='';document.querySelectorAll('.industry-btn').forEach(b=>b.classList.remove('selected'));event.target.closest('.industry-btn').classList.add('selected');renderTasks();show('step-task');updateBtn()}
+function renderTasks(){const list=document.getElementById('task-list');list.innerHTML='';TASKS[state.business].forEach(t=>{const btn=document.createElement('button');btn.className='task-btn'+(state.selectedTask===t?' selected':'');btn.textContent=(state.selectedTask===t?'✓ ':'')+t;btn.onclick=()=>selectTask(t);list.appendChild(btn)})}
+function selectTask(t){state.selectedTask=t;state.customTask='';document.getElementById('custom-task').value='';renderTasks();updateBtn()}
+function onCustomInput(){state.customTask=document.getElementById('custom-task').value;if(state.customTask.trim()){state.selectedTask=null;renderTasks()}updateBtn()}
+function updateBtn(){document.getElementById('generate-btn').disabled=!(state.selectedTask||state.customTask.trim())}
+function goBack(){show('step-business')}
+async function generate(){if(!state.unlocked&&state.promptsGenerated>=2){show('step-gate');return}const task=state.selectedTask||state.customTask.trim();if(!task)return;show('step-generating');try{const res=await fetch('/api/generate',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({model:'claude-sonnet-4-20250514',max_tokens:1000,system:SYSTEM,messages:[{role:'user',content:`Create a detailed mega-prompt for a ${state.businessLabel} who needs to: "${task}". Make it highly specific to this business type with realistic customisable variables.`}]})});const data=await res.json();const text=data.content?.find(b=>b.type==='text')?.text||'Something went wrong. Please try again.';state.generatedPrompt=text;state.promptsGenerated+=1;document.getElementById('result-task-name').textContent=task;document.getElementById('prompt-output').textContent=text;document.getElementById('copy-btn').textContent='Copy Prompt';document.getElementById('copy-btn').classList.remove('copied');show('step-result')}catch(e){state.generatedPrompt='Something went wrong. Please refresh and try again.';document.getElementById('result-task-name').textContent=task;document.getElementById('prompt-output').textContent=state.generatedPrompt;show('step-result')}}
+function copyPrompt(){navigator.clipboard.writeText(state.generatedPrompt).catch(()=>{const ta=document.createElement('textarea');ta.value=state.generatedPrompt;document.body.appendChild(ta);ta.select();document.execCommand('copy');document.body.removeChild(ta)});const btn=document.getElementById('copy-btn');btn.textContent='✓ Copied!';btn.classList.add('copied');setTimeout(()=>{btn.textContent='Copy Prompt';btn.classList.remove('copied')},2200)}
+const KIT_FORM_ID='YOUR_KIT_FORM_ID';
+const KIT_API_KEY='YOUR_KIT_API_KEY';
+async function submitEmail(){const emailInput=document.getElementById('email-input');const unlockBtn=document.querySelector('.btn-unlock');const email=emailInput.value.trim();if(!email.includes('@')||!email.includes('.')){emailInput.style.borderColor='var(--raspberry)';return}unlockBtn.textContent='...';unlockBtn.disabled=true;emailInput.disabled=true;try{const res=await fetch(`https://api.convertkit.com/v3/forms/${KIT_FORM_ID}/subscribe`,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({api_key:KIT_API_KEY,email:email,tags:['bc-prompt-generator','biz-'+state.business],fields:{business_type:state.businessLabel,source:'BC Prompt Generator'}})});const data=await res.json();if(data.subscription||data.subscriber){state.unlocked=true;state.promptsGenerated=0;show('step-success')}else throw new Error('failed')}catch(err){state.unlocked=true;state.promptsGenerated=0;show('step-success')}finally{unlockBtn.textContent='Continue →';unlockBtn.disabled=false;emailInput.disabled=false}}
+function reset(){state.selectedTask=null;state.customTask='';document.getElementById('custom-task').value='';document.querySelectorAll('.industry-btn').forEach(b=>b.classList.remove('selected'));show('step-business')}
 renderTasks();
 </script>
 </body>
