@@ -843,13 +843,10 @@ Return ONLY the mega-prompt. No preamble, no explanation, no markdown fences.`;
     if (!task) return;
     show('step-generating');
     try {
-      const res = await fetch('https://api.anthropic.com/v1/messages', {
+      const res = await fetch('/api/generate', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
-          'x-api-key': ANTHROPIC_API_KEY,
-          'anthropic-version': '2023-06-01',
-          'anthropic-dangerous-direct-browser-access': 'true',
         },
         body: JSON.stringify({
           model: 'claude-sonnet-4-20250514',
@@ -900,7 +897,8 @@ Return ONLY the mega-prompt. No preamble, no explanation, no markdown fences.`;
   // and proxy this request through /api/subscribe to keep your key server-side.
   // Ask Cowork to build the /api/subscribe serverless function (Session 3).
   // ─────────────────────────────────────────────────────────────────────────
-  const ANTHROPIC_API_KEY = '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';
+  // API key is now stored securely in Vercel environment variables
+  // and accessed via the /api/generate serverless proxy
   const KIT_FORM_ID  = 'YOUR_KIT_FORM_ID';   // e.g. '7654321'
   const KIT_API_KEY  = 'YOUR_KIT_API_KEY';    // e.g. 'abc123...'
 
