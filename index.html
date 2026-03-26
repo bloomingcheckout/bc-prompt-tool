@@ -162,7 +162,15 @@ textarea::placeholder{color:var(--pink-deep)}
 <script>
 const TASKS={florist:["Write bouquet and product descriptions","Create a seasonal campaign (Mother's Day, Valentine's, etc.)","Write SEO collection page copy","Build an email marketing sequence","Generate social media captions","Write Google Ads copy","Create a customer win-back campaign"],shopify:["Write SEO collection page copy","Write product descriptions that convert","Create a Google Ads campaign","Build an email welcome sequence","Write meta titles and descriptions","Generate a social media content calendar","Write a blog post for SEO"],fashion:["Write product descriptions for clothing","Create a new season launch campaign","Write Instagram and TikTok captions","Build an email sequence for new arrivals","Write SEO collection page copy","Create a lookbook narrative"],wellness:["Write service and treatment descriptions","Create a wellness package launch campaign","Write Instagram content","Build a client nurture email sequence","Write a blog post for SEO","Write Google Ads for a local studio"],agency:["Write a client SEO proposal","Create a client audit summary","Write cold outreach emails","Build a content strategy brief","Write case study copy","Write a monthly performance report"],lifestyle:["Write brand voice guidelines","Create Instagram content pillars","Write a product launch email sequence","Build product storytelling copy","Write website homepage copy","Write influencer outreach emails"]};
 const SYSTEM=`You are an expert prompt engineer who creates mega-prompts -- detailed, role-based AI instructions that produce professional business outputs in a single use.\n\nStructure every mega-prompt exactly like this:\n\n#CONTEXT:\n[Assign a specific expert AI role relevant to the task]\n\n#GOAL:\n[The precise outcome the user wants to achieve]\n\n#TASK REQUIREMENTS:\n[4-6 specific, measurable criteria the output must meet]\n\n#OUTPUT FORMAT:\n[Exact format, structure, length, and delivery]\n\n#TONE AND VOICE:\n[Specific tone, brand personality, and audience]\n\n#VARIABLES TO CUSTOMISE:\n[List every [BRACKETED_VARIABLE] the user must fill in before using]\n\nMake the prompt detailed, specific, and immediately usable. At least 280 words. Return ONLY the mega-prompt. No preamble, no explanation, no markdown fences.`;
-let state={business:'shopify',businessLabel:'Shopify Store Owner',selectedTask:null,customTask:'',promptsGenerated:0,unlocked:false,generatedPrompt:''};
+let state={
+  business:'shopify',
+  businessLabel:'Shopify Store Owner',
+  selectedTask:null,
+  customTask:'',
+  promptsGenerated:parseInt(localStorage.getItem('bc_prompts')||'0'),
+  unlocked:localStorage.getItem('bc_unlocked')==='true',
+  generatedPrompt:''
+};
 function show(id){['step-business','step-task','step-generating','step-result','step-gate','step-success'].forEach(s=>document.getElementById(s).style.display='none');document.getElementById(id).style.display='block';const steps=document.querySelectorAll('.step-item');steps.forEach(s=>s.classList.remove('active'));if(id==='step-business')document.getElementById('s1').classList.add('active');else if(id==='step-task')document.getElementById('s2').classList.add('active');else document.getElementById('s3').classList.add('active')}
 function selectBusiness(id,label){state.business=id;state.businessLabel=label;state.selectedTask=null;state.customTask='';document.querySelectorAll('.ind-btn').forEach(b=>b.classList.remove('selected'));event.target.closest('.ind-btn').classList.add('selected');renderTasks();show('step-task');updateBtn()}
 function renderTasks(){const list=document.getElementById('task-list');list.innerHTML='';TASKS[state.business].forEach(t=>{const btn=document.createElement('button');btn.className='task-btn'+(state.selectedTask===t?' selected':'');btn.textContent=(state.selectedTask===t?'✓ ':'')+t;btn.onclick=()=>selectTask(t);list.appendChild(btn)})}
@@ -170,11 +178,70 @@ function selectTask(t){state.selectedTask=t;state.customTask='';document.getElem
 function onCustomInput(){state.customTask=document.getElementById('custom-task').value;if(state.customTask.trim()){state.selectedTask=null;renderTasks()}updateBtn()}
 function updateBtn(){document.getElementById('generate-btn').disabled=!(state.selectedTask||state.customTask.trim())}
 function goBack(){show('step-business')}
-async function generate(){if(!state.unlocked&&state.promptsGenerated>=2){show('step-gate');return}const task=state.selectedTask||state.customTask.trim();if(!task)return;show('step-generating');try{const res=await fetch('/api/generate',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({model:'claude-sonnet-4-20250514',max_tokens:1000,system:SYSTEM,messages:[{role:'user',content:`Create a detailed mega-prompt for a ${state.businessLabel} who needs to: "${task}". Make it highly specific to this business type with realistic customisable variables.`}]})});const data=await res.json();const text=data.content?.find(b=>b.type==='text')?.text||'Something went wrong. Please try again.';state.generatedPrompt=text;state.promptsGenerated+=1;document.getElementById('result-task-name').textContent=task;document.getElementById('prompt-output').textContent=text;document.getElementById('copy-btn').textContent='Copy Prompt';document.getElementById('copy-btn').classList.remove('copied');show('step-result')}catch(e){state.generatedPrompt='Something went wrong. Please refresh and try again.';document.getElementById('result-task-name').textContent=task;document.getElementById('prompt-output').textContent=state.generatedPrompt;show('step-result')}}
+async function generate(){
+  if(!state.unlocked&&state.promptsGenerated>=2){show('step-gate');return}
+  const task=state.selectedTask||state.customTask.trim();
+  if(!task)return;
+  show('step-generating');
+  try{
+    const res=await fetch('/api/generate',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({model:'claude-sonnet-4-20250514',max_tokens:1000,system:SYSTEM,messages:[{role:'user',content:`Create a detailed mega-prompt for a ${state.businessLabel} who needs to: "${task}". Make it highly specific to this business type with realistic customisable variables.`}]})});
+    const data=await res.json();
+    const text=data.content?.find(b=>b.type==='text')?.text||'Something went wrong. Please try again.';
+    state.generatedPrompt=text;
+    state.promptsGenerated+=1;
+    localStorage.setItem('bc_prompts',state.promptsGenerated);
+    document.getElementById('result-task-name').textContent=task;
+    document.getElementById('prompt-output').textContent=text;
+    document.getElementById('copy-btn').textContent='Copy Prompt';
+    document.getElementById('copy-btn').classList.remove('copied');
+    show('step-result');
+  }catch(e){
+    state.generatedPrompt='Something went wrong. Please refresh and try again.';
+    document.getElementById('result-task-name').textContent=task;
+    document.getElementById('prompt-output').textContent=state.generatedPrompt;
+    show('step-result');
+  }
+}
 function copyPrompt(){navigator.clipboard.writeText(state.generatedPrompt).catch(()=>{const ta=document.createElement('textarea');ta.value=state.generatedPrompt;document.body.appendChild(ta);ta.select();document.execCommand('copy');document.body.removeChild(ta)});const btn=document.getElementById('copy-btn');btn.textContent='✓ Copied!';btn.classList.add('copied');setTimeout(()=>{btn.textContent='Copy Prompt';btn.classList.remove('copied')},2200)}
-const KIT_FORM_ID='YOUR_KIT_FORM_ID';
-const KIT_API_KEY='YOUR_KIT_API_KEY';
-async function submitEmail(){const emailInput=document.getElementById('email-input');const unlockBtn=document.querySelector('.btn-unlock');const email=emailInput.value.trim();if(!email.includes('@')||!email.includes('.')){emailInput.style.borderColor='var(--raspberry)';return}unlockBtn.textContent='...';unlockBtn.disabled=true;emailInput.disabled=true;try{const res=await fetch(`https://api.convertkit.com/v3/forms/${KIT_FORM_ID}/subscribe`,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({api_key:KIT_API_KEY,email:email,tags:['bc-prompt-generator','biz-'+state.business],fields:{business_type:state.businessLabel,source:'BC Prompt Generator'}})});const data=await res.json();if(data.subscription||data.subscriber){state.unlocked=true;state.promptsGenerated=0;show('step-success')}else throw new Error('failed')}catch(err){state.unlocked=true;state.promptsGenerated=0;show('step-success')}finally{unlockBtn.textContent='Continue →';unlockBtn.disabled=false;emailInput.disabled=false}}
+async function submitEmail(){
+  const emailInput=document.getElementById('email-input');
+  const unlockBtn=document.querySelector('.btn-unlock');
+  const email=emailInput.value.trim();
+  if(!email.includes('@')||!email.includes('.')){emailInput.style.borderColor='var(--raspberry)';return}
+  unlockBtn.textContent='...';
+  unlockBtn.disabled=true;
+  emailInput.disabled=true;
+  try{
+    const res=await fetch('https://api.convertkit.com/v3/forms/972c363227/subscribe',{
+      method:'POST',
+      headers:{'Content-Type':'application/json'},
+      body:JSON.stringify({
+        api_key:'9YnFs4SSY8cFEk7C6uIl3w',
+        email:email,
+        tags:['bc-prompt-generator','biz-'+state.business],
+        fields:{business_type:state.businessLabel,source:'BC Prompt Generator'}
+      })
+    });
+    const data=await res.json();
+    if(data.subscription||data.subscriber){
+      state.unlocked=true;
+      state.promptsGenerated=0;
+      localStorage.setItem('bc_unlocked','true');
+      localStorage.setItem('bc_prompts','0');
+      show('step-success');
+    }else throw new Error('failed');
+  }catch(err){
+    state.unlocked=true;
+    state.promptsGenerated=0;
+    localStorage.setItem('bc_unlocked','true');
+    localStorage.setItem('bc_prompts','0');
+    show('step-success');
+  }finally{
+    unlockBtn.textContent='Continue →';
+    unlockBtn.disabled=false;
+    emailInput.disabled=false;
+  }
+}
 function reset(){state.selectedTask=null;state.customTask='';document.getElementById('custom-task').value='';document.querySelectorAll('.ind-btn').forEach(b=>b.classList.remove('selected'));show('step-business')}
 renderTasks();
 </script>
