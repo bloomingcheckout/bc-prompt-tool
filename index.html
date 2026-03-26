@@ -203,6 +203,43 @@ async function generate(){
 
 function copyPrompt(){navigator.clipboard.writeText(state.generatedPrompt).catch(()=>{const ta=document.createElement('textarea');ta.value=state.generatedPrompt;document.body.appendChild(ta);ta.select();document.execCommand('copy');document.body.removeChild(ta)});const btn=document.getElementById('copy-btn');btn.textContent='✓ Copied!';btn.classList.add('copied');setTimeout(()=>{btn.textContent='Copy Prompt';btn.classList.remove('copied')},2200)}
 
+function unlockAndContinue(){
+  sessionUnlocked=true;
+  sessionPrompts=0;
+  try{localStorage.setItem('bc_unlocked','true')}catch(e){}
+  show('step-success');
+}
+
+async function subscribeToKit(email){
+  // Try server-side proxy first
+  try{
+    const res=await fetch('/api/subscribe',{
+      method:'POST',
+      headers:{'Content-Type':'application/json'},
+      body:JSON.stringify({email:email,business:state.business,businessLabel:state.businessLabel})
+    });
+    const data=await res.json();
+    if(data.subscription){return true;}
+  }catch(e){}
+
+  // Fallback: direct Kit API call
+  try{
+    const res=await fetch('https://api.convertkit.com/v3/forms/972c363227/subscribe',{
+      method:'POST',
+      headers:{'Content-Type':'application/json'},
+      body:JSON.stringify({
+        api_key:'9YnFs4SSY8cFEk7C6uIl3w',
+        email:email,
+        fields:{business_type:state.businessLabel,source:'BC Prompt Generator'}
+      })
+    });
+    const data=await res.json();
+    if(data.subscription){return true;}
+  }catch(e){}
+
+  return false;
+}
+
 async function submitEmail(){
   const emailInput=document.getElementById('email-input');
   const unlockBtn=document.querySelector('.btn-unlock');
@@ -211,29 +248,11 @@ async function submitEmail(){
   unlockBtn.textContent='...';
   unlockBtn.disabled=true;
   emailInput.disabled=true;
-  try{
-    const res=await fetch('/api/subscribe',{
-      method:'POST',
-      headers:{'Content-Type':'application/json'},
-      body:JSON.stringify({email:email,business:state.business,businessLabel:state.businessLabel})
-    });
-    const data=await res.json();
-    if(data.subscription||data.subscriber){
-      sessionUnlocked=true;
-      sessionPrompts=0;
-      try{localStorage.setItem('bc_unlocked','true')}catch(e){}
-      show('step-success');
-    }else throw new Error('failed');
-  }catch(err){
-    sessionUnlocked=true;
-    sessionPrompts=0;
-    try{localStorage.setItem('bc_unlocked','true')}catch(e){}
-    show('step-success');
-  }finally{
-    unlockBtn.textContent='Continue →';
-    unlockBtn.disabled=false;
-    emailInput.disabled=false;
-  }
+  await subscribeToKit(email);
+  unlockBtn.textContent='Continue →';
+  unlockBtn.disabled=false;
+  emailInput.disabled=false;
+  unlockAndContinue();
 }
 
 function reset(){state.selectedTask=null;state.customTask='';document.getElementById('custom-task').value='';document.querySelectorAll('.ind-btn').forEach(b=>b.classList.remove('selected'));show('step-business')}
