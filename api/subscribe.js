@@ -7,16 +7,14 @@ export default async function handler(req, res) {
   const {email}=req.body;
   if(!email) return res.status(400).json({error:'Email required'});
   try{
-    const response=await fetch('https://api.convertkit.com/v3/forms/972c363227/subscribe',{
+    const response=await fetch('https://api.convertkit.com/v3/forms/9250349/subscribe',{
       method:'POST',
       headers:{'Content-Type':'application/json'},
       body:JSON.stringify({api_key:'9YnFs4SSY8cFEk7C6uIl3w',email:email})
     });
     const data=await response.json();
-    console.log('Kit response:',JSON.stringify(data));
     return res.status(200).json(data);
   }catch(error){
-    console.error('Kit error:',error);
     return res.status(500).json({error:'Failed'});
   }
 }
